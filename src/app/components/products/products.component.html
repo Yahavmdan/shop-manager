@@ -31,10 +31,18 @@
         <p class="card-text">{{ product.price }}$</p>
 
         <div class="d-flex justify-content-evenly">
-          <button class="btn btn-danger" (click)="deleteData(product.id)">
+          <button
+            style="width: 45%"
+            class="btn btn-danger"
+            (click)="deleteData(product.id)"
+          >
             Delete
           </button>
-          <button class="btn btn-primary" (click)="goToEdit(product.id)">
+          <button
+            style="width: 45%"
+            class="btn btn-primary"
+            (click)="goToEdit(product.id)"
+          >
             Edit
           </button>
         </div>
