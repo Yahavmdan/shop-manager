@@ -14,6 +14,9 @@ import { TaskComponent } from './components/task/task.component';
 
 import { ToastService, AngularToastifyModule } from 'angular-toastify';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 const appRoutes: Routes = [{ path: '', component: ProductsComponent }];
 
@@ -27,6 +30,9 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent }];
     HomeComponent,
     TaskComponent,
     FooterComponent,
+    LoginComponent,
+    SigninComponent,
+    CarouselComponent,
   ],
   imports: [
     HttpClientModule,

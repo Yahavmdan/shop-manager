@@ -1,0 +1,31 @@
+<h1>Log in</h1>
+
+<form (ngSubmit)="logInUser()">
+  <div class="form-group">
+    <label for="description">Email:</label>
+    <input
+      type="text"
+      name="description"
+      class="form-control"
+      [(ngModel)]="user.email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="price">Password:</label>
+    <input
+      type="password"
+      name="price"
+      class="form-control"
+      [(ngModel)]="user.password"
+    />
+  </div>
+
+  <br />
+  <lib-toastify-toast-container></lib-toastify-toast-container>
+  <br />
+  <div class="d-flex justify-content-evenly">
+    <button style="width: 30%" class="btn btn-primary">Log In</button>
+    <button style="width: 30%" class="btn btn-dark" type="reset">Reset</button>
+    <a style="width: 30%" class="btn btn-danger" routerLink="/home">Cancel</a>
+  </div>
+</form>

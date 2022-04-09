@@ -29,10 +29,33 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/products">Products</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="token" class="nav-item">
           <a class="nav-link" routerLink="/add-product">Add Product</a>
         </li>
       </ul>
+      <form class="d-flex">
+        <a
+          *ngIf="!token"
+          class="btn btn-outline-success m-1"
+          routerLink="/login"
+          type="submit"
+          >Log-in</a
+        >
+        <a
+          *ngIf="!token"
+          class="btn btn-outline-success m-1"
+          routerLink="/signin"
+          type="submit"
+          >Sign-in</a
+        >
+        <a
+          *ngIf="token"
+          (click)="logout()"
+          class="btn btn-outline-danger m-1"
+          type="submit"
+          >Log-out</a
+        >
+      </form>
     </div>
   </div>
 </nav>

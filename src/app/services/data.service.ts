@@ -5,37 +5,48 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class DataService {
-  header = { Accept: 'application/json' };
-  constructor(private httpClient: HttpClient) {}
+  token = localStorage.getItem('token');
+  header = {
+    Accept: 'application/json',
+    Authorization: `Bearer ${this.token}`,
+  };
+  URL = 'http://localhost:8000/api';
 
+  constructor(private httpClient: HttpClient) {}
   getData() {
-    return this.httpClient.get('http://localhost:8000/api/products');
+    return this.httpClient.get(`${this.URL}/products`);
   }
   createData(data: any) {
-    return this.httpClient.post('http://localhost:8000/api/products', data, {
+    return this.httpClient.post(`${this.URL}/products`, data, {
       headers: this.header,
     });
   }
   editData(id: any, data: any) {
-    return this.httpClient.put(
-      `http://localhost:8000/api/products/${id}`,
-      data,
-      {
-        headers: this.header,
-      }
-    );
+    return this.httpClient.put(`${this.URL}/products/${id}`, data, {
+      headers: this.header,
+    });
   }
   getById(id: any) {
-    return this.httpClient.get(`http://localhost:8000/api/products/${id}`, {
+    return this.httpClient.get(`${this.URL}/products/${id}`, {
       headers: this.header,
     });
   }
   deleteData(id: any) {
-    return this.httpClient.delete(`http://localhost:8000/api/products/${id}`);
+    return this.httpClient.delete(`${this.URL}/products/${id}`, {
+      headers: this.header,
+    });
   }
   searchData(name: any) {
-    return this.httpClient.get(
-      `http://localhost:8000/api/products/search/${name}`
-    );
+    return this.httpClient.get(`${this.URL}/products/search/${name}`);
+  }
+  createUser(data: any) {
+    return this.httpClient.post(`${this.URL}/register`, data, {
+      headers: this.header,
+    });
+  }
+  logInUser(data: any) {
+    return this.httpClient.post(`${this.URL}/login`, data, {
+      headers: this.header,
+    });
   }
 }

@@ -8,8 +8,8 @@ import { ToastService } from 'angular-toastify';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: any;
-
+  products: any = null;
+  token = localStorage.getItem('token');
   constructor(
     private toast: ToastService,
     private dataService: DataService,
@@ -25,11 +25,6 @@ export class ProductsComponent implements OnInit {
   getProductsData() {
     this.dataService.getData().subscribe((res) => {
       this.products = res;
-      if (!this.products.length) {
-        this.toast.error('There are no products');
-
-        return;
-      }
     });
   }
   deleteData(id: any) {

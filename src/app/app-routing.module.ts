@@ -4,8 +4,10 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
-
 import { TaskComponent } from './components/task/task.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,10 +19,12 @@ const routes: Routes = [
   {
     path: 'add-product',
     component: AddProductComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit/:id',
     component: EditProductComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
@@ -29,6 +33,19 @@ const routes: Routes = [
   {
     path: 'task',
     component: TaskComponent,
+  },
+  {
+    path: 'signin',
+    component: SigninComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
 ];
 
