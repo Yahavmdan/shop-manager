@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'src/app/product';
-import { ToastService } from 'angular-toastify';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from 'src/app/services/data.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Product} from 'src/app/models/product';
+import {ToastService} from 'angular-toastify';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -35,11 +35,7 @@ export class EditProductComponent implements OnInit {
     this.dataService
       .editData(this.id, this.product)
       .toPromise()
-      .then((res) => {
-        this.router.navigate(['/products']);
-      })
-      .catch((err) => {
-        this.toast.error('Please check that you filled everything ');
-      });
+      .then(res => this.router.navigate(['/products']).then())
+      .catch(err => this.toast.error('Please check that you filled everything '));
   }
 }

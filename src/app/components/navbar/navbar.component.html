@@ -39,22 +39,24 @@
           class="btn btn-outline-success m-1"
           routerLink="/login"
           type="submit"
-          >Log-in</a
-        >
+          >Log-in</a>
         <a
           *ngIf="!token"
           class="btn btn-outline-success m-1"
           routerLink="/signin"
           type="submit"
-          >Sign-in</a
-        >
+          >Sign-in</a>
+        <a
+          *ngIf="token"
+          class="nav-link btn btn-outline-primary m-1"
+          routerLink="/user-details"
+        >User details</a>
         <a
           *ngIf="token"
           (click)="logout()"
           class="btn btn-outline-danger m-1"
           type="submit"
-          >Log-out</a
-        >
+          >Log-out</a>
       </form>
     </div>
   </div>

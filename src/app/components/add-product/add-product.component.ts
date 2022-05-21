@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import { Router } from '@angular/router';
-import { Product } from 'src/app/product';
-import { ToastService } from 'angular-toastify';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from 'src/app/services/data.service';
+import {Router} from '@angular/router';
+import {Product} from 'src/app/models/product';
+import {ToastService} from 'angular-toastify';
 
 @Component({
   selector: 'app-add-product',
@@ -16,9 +16,11 @@ export class AddProductComponent implements OnInit {
     private dataService: DataService,
     private toast: ToastService,
     private router: Router
-  ) {}
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   createData() {
     this.dataService

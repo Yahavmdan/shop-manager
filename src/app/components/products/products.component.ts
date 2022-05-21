@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: any = null;
+  products = []
   token = localStorage.getItem('token');
+
   constructor(
     private toast: ToastService,
     private dataService: DataService,
     private router: Router
   ) {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/products']).then();
   }
 
   ngOnInit(): void {
@@ -23,7 +25,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getProductsData() {
-    this.dataService.getData().subscribe((res) => {
+    this.dataService.getData().subscribe((res:any) => {
       this.products = res;
     });
   }
@@ -37,11 +39,11 @@ export class ProductsComponent implements OnInit {
     }
   }
   goToEdit(id: any) {
-    this.router.navigate([`/edit/${id}`]);
+    this.router.navigate([`/edit/${id}`]).then();
   }
 
   search(name: any) {
-    this.dataService.searchData(name.target.value).subscribe((res) => {
+    this.dataService.searchData(name.target.value).subscribe((res:any) => {
       this.products = res;
 
       if (name.target.value === '') {

@@ -1,6 +1,6 @@
 <h1>Add a product</h1>
 
-<form (ngSubmit)="createData()">
+<form (ngSubmit)="createData()" class="d-flex flex-column ">
   <div class="form-group">
     <label for="name">Name of product:</label>
     <input
@@ -37,14 +37,14 @@
       [(ngModel)]="product.img"
     />
   </div>
-  <br />
+  <br/>
   <lib-toastify-toast-container></lib-toastify-toast-container>
-  <br />
+  <br/>
   <div class="d-flex justify-content-evenly">
-    <button style="width: 30%" class="btn btn-primary">Add Product</button>
-    <button style="width: 30%" class="btn btn-dark" type="reset">Reset</button>
-    <a style="width: 30%" class="btn btn-danger" routerLink="/products"
-      >Cancel</a
+    <button class="btn btn-primary w-25">Add Product</button>
+    <button class="btn btn-dark w-25" type="reset">Reset</button>
+    <a class="btn btn-danger w-25" routerLink="/products"
+    >Cancel</a
     >
   </div>
 </form>

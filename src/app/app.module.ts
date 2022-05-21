@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 const appRoutes: Routes = [{ path: '', component: ProductsComponent }];
 
@@ -33,6 +34,7 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent }];
     LoginComponent,
     SigninComponent,
     CarouselComponent,
+    UserDetailsComponent,
   ],
   imports: [
     HttpClientModule,
