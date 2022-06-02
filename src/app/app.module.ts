@@ -18,8 +18,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ResetPasswordFormComponent } from './components/reset-password-form/reset-password-form.component';
 
-const appRoutes: Routes = [{ path: '', component: ProductsComponent }];
 
 @NgModule({
   declarations: [
@@ -35,12 +36,13 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent }];
     SigninComponent,
     CarouselComponent,
     UserDetailsComponent,
+    ResetPasswordComponent,
+    ResetPasswordFormComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
     AngularToastifyModule,
     FormsModule,
   ],

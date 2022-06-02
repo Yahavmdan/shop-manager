@@ -8,7 +8,9 @@ import { TaskComponent } from './components/task/task.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import {UserDetailsComponent} from "./components/user-details/user-details.component";
+import { UserDetailsComponent } from "./components/user-details/user-details.component";
+import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
+import { ResetPasswordFormComponent } from "./components/reset-password-form/reset-password-form.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +23,11 @@ const routes: Routes = [
     path: 'add-product',
     component: AddProductComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'reset-password-form/:token',
+    component: ResetPasswordFormComponent,
+    // canActivate: [AuthGuard],
   },
   {
     path: 'edit/:id',
@@ -42,6 +49,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
   },
   {
     path: 'user-details',
