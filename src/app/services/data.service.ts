@@ -50,26 +50,4 @@ export class DataService {
   searchData(name: any) {
     return this.httpClient.get(`${this.URL}/products/search/${name}`);
   }
-
-  createUser(data: any) {
-    return this.httpClient.post(`${this.URL}/register`, data, {
-      headers: this.header,
-    });
-  }
-
-  logInUser(data: any) {
-    return this.httpClient.post(`${this.URL}/login`, data, {
-      headers: this.header,
-    });
-  }
-
-  sendResetPasswordEmail(email) {
-    return this.httpClient.post(`${this.URL}/send-forgot-password-email`, email);
-  }
-
-  resetPasswordForm(data) {
-    return this.httpClient.post(`${this.URL}/reset-password-form`,data,{
-      headers: this.header,
-    });
-  }
 }

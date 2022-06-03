@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ToastService} from 'angular-toastify';
-import {DataService} from 'src/app/services/data.service';
 import {User} from 'src/app/models/user';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   token = null;
 
   constructor(
-    private dataService: DataService,
+    private authService: AuthService,
     private toast: ToastService,
     private router: Router
   ) {
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   logInUser() {
-    this.dataService
+    this.authService
       .logInUser(this.user)
       .toPromise()
       .then((res: any) => {
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         location.href = '/products';
       })
       .catch((err) => {
-        this.toast.error(err);
+        this.toast.error(err.error.message);
       });
   }
 }

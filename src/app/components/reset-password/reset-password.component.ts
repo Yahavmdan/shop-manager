@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
+import {Component, OnInit} from '@angular/core';
 import {ToastService} from "angular-toastify";
-import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-reset-password',
@@ -12,23 +11,21 @@ export class ResetPasswordComponent implements OnInit {
 
   userEmail;
 
-  constructor(public dataService:DataService,
-              private toast:ToastService,
-              ) {
+  constructor(public authService: AuthService,
+              private toast: ToastService,
+  ) {
   }
 
   ngOnInit(): void {
   }
 
-  sendResetPasswordEmail(userEmail):void {
+  sendResetPasswordEmail(userEmail): void {
     userEmail = this.userEmail
-    this.dataService
+    this.authService
       .sendResetPasswordEmail(userEmail)
       .toPromise()
       .then(res => this.toast.success(res['message']))
-      .catch((err) => {
-        this.toast.error(err.error['message'])
-        console.log(err)
-      });
+      .catch(err => this.toast.error(err.error['message'])
+      );
   }
 }
