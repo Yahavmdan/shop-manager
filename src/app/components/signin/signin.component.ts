@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from 'src/app/models/user';
 import {ToastService} from 'angular-toastify';
-import {Regex} from "../../models/regex";
+import {Regexp} from "../../models/regex";
 import {AuthService} from "../../services/auth.service";
 
 @Component({
@@ -26,16 +26,16 @@ export class SigninComponent implements OnInit {
 
 
   checkRegex(): boolean {
-    if (!Regex.password.test(this.user.password)) {
+    if (!Regexp.password.test(this.user.password)) {
       this.toast.error('Password has to be at least 8 characters long and has to contain at' +
         ' least 1 uppercase letter, lowercase letter, a number and a spacial sign.');
       return false;
     }
-    if (!Regex.name.test(this.user.name)) {
+    if (!Regexp.name.test(this.user.name)) {
       this.toast.error('Name has to be provided in English characters only');
       return false;
     }
-    if (!Regex.email.test(this.user.email)) {
+    if (!Regexp.email.test(this.user.email)) {
       this.toast.error('You have entered an invalid email address');
       return false;
     }

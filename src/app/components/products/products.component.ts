@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
   constructor(
     private toast: ToastService,
     private dataService: DataService,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {
     this.router.navigate(['/products']).then();
@@ -51,8 +51,8 @@ export class ProductsComponent implements OnInit {
     this.dataService.searchData(name.target.value).subscribe((res: any) => {
       this.products = res;
 
-      if (name.target.value === '') {
-        this.ngOnInit();
+      if (!name.target.value) {
+        this.getProductsData();
       }
     });
   }

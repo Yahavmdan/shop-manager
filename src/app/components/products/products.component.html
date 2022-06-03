@@ -11,7 +11,7 @@
   </div>
   <br />
   <lib-toastify-toast-container></lib-toastify-toast-container>
-  <div *ngIf="!products.length" class="alert alert-danger" role="alert">
+  <div *ngIf="!products.length && !products" class="alert alert-danger" role="alert">
     There are no products, click to add one...
   </div>
   <button *ngIf="token" class="btn btn-primary w-100" routerLink="/add-product">

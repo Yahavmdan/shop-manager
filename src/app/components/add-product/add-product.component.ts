@@ -10,7 +10,10 @@ import {ToastService} from 'angular-toastify';
   styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent implements OnInit {
+
   product = new Product();
+
+  isDisabled:boolean = false;
 
   constructor(
     private dataService: DataService,
@@ -23,6 +26,7 @@ export class AddProductComponent implements OnInit {
   }
 
   createData() {
+    this.isDisabled = true;
     this.dataService
       .createData(this.product)
       .toPromise()
@@ -30,6 +34,7 @@ export class AddProductComponent implements OnInit {
         this.router.navigate(['/products']);
       })
       .catch((err) => {
+        this.isDisabled = false;
         this.toast.error(err.error.message);
       });
   }

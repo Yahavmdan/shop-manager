@@ -18,8 +18,7 @@ export class AuthService {
 
   URL = 'http://localhost:8000/api';
 
-  constructor(private httpClient: HttpClient, private router: Router) {
-  }
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
 
   checkTokenExistence(data): boolean {
