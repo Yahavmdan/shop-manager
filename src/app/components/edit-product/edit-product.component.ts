@@ -9,6 +9,7 @@ import {ToastService} from 'angular-toastify';
   styleUrls: ['./edit-product.component.scss'],
 })
 export class EditProductComponent implements OnInit {
+  isDisabled:boolean = false;
   product = new Product();
   id = this.route.snapshot.params['id'];
   data: any;
@@ -32,10 +33,14 @@ export class EditProductComponent implements OnInit {
   }
 
   editData() {
+    this.isDisabled = true;
     this.dataService
       .editData(this.id, this.product)
       .toPromise()
-      .then(res => this.router.navigate(['/products']).then())
-      .catch(err => this.toast.error('Please check that you filled everything '));
+      .then(() => this.router.navigate(['/products']).then())
+      .catch(() => {
+        this.isDisabled = false;
+        this.toast.error('Please check that you filled everything ')
+      });
   }
 }

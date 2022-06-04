@@ -13,8 +13,10 @@ import { ResetPasswordComponent } from "./components/reset-password/reset-passwo
 import { ResetPasswordFormComponent } from "./components/reset-password-form/reset-password-form.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-
+  { path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
   {
     path: 'products',
     component: ProductsComponent,
@@ -27,7 +29,7 @@ const routes: Routes = [
   {
     path: 'reset-password-form/:token',
     component: ResetPasswordFormComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit/:id',

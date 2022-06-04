@@ -2,7 +2,7 @@
 
 <form (ngSubmit)="editData()">
   <div class="form-group">
-    <label for="name">Name:</label>
+    <label>Name:</label>
     <input
       type="text"
       name="name"
@@ -11,7 +11,7 @@
     />
   </div>
   <div class="form-group">
-    <label for="description">Description:</label>
+    <label>Description:</label>
     <input
       type="text"
       name="description"
@@ -20,7 +20,7 @@
     />
   </div>
   <div class="form-group">
-    <label for="price">Price:</label>
+    <label>Price:</label>
     <input
       type="number"
       name="price"
@@ -29,7 +29,7 @@
     />
   </div>
   <div class="form-group">
-    <label for="img">Image(URL):</label>
+    <label>Image(URL):</label>
     <input
       type="text"
       name="img"
@@ -40,10 +40,8 @@
   <br />
   <lib-toastify-toast-container></lib-toastify-toast-container>
   <div class="d-flex justify-content-evenly">
-    <button style="width: 30%" class="btn btn-primary">Submit</button>
-    <button style="width: 30%" class="btn btn-dark" type="reset">Reset</button>
-    <button style="width: 30%" class="btn btn-danger" routerLink="/products">
-      Cancel
-    </button>
+    <button [disabled]="isDisabled" class="btn btn-primary w-25" type="submit">Submit</button>
+    <button class="btn btn-dark w-25" type="reset">Reset</button>
+    <button class="btn btn-danger w-25" routerLink="/products">Cancel</button>
   </div>
 </form>

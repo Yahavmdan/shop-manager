@@ -10,6 +10,7 @@ import {AuthService} from "../../services/auth.service";
 export class ResetPasswordComponent implements OnInit {
 
   userEmail;
+  isDisabled:boolean = false;
 
   constructor(public authService: AuthService,
               private toast: ToastService,
@@ -20,12 +21,16 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   sendResetPasswordEmail(userEmail): void {
+    this.isDisabled = true;
     userEmail = this.userEmail
     this.authService
       .sendResetPasswordEmail(userEmail)
       .toPromise()
       .then(res => this.toast.success(res['message']))
-      .catch(err => this.toast.error(err.error['message'])
+      .catch((err) => {
+        this.isDisabled = false;
+        this.toast.error(err.error['message'])
+        }
       );
   }
 }
