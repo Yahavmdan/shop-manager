@@ -3,4 +3,5 @@ export class User {
   email: any;
   password: any;
   password_confirmation: any;
+  is_admin?: boolean;
 }

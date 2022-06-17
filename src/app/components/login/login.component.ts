@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         this.token = localStorage.setItem('token', res.token);
         localStorage.setItem('name', res.user.name);
         localStorage.setItem('email', res.user.email);
-        location.href = '/products';
+        location.href = '/home';
       })
       .catch((err) => {
         this.toast.error(err.error.message);

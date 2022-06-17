@@ -2,7 +2,7 @@
 
 <form (ngSubmit)="logInUser()">
   <div class="form-group">
-    <label for="description">Email:</label>
+    <label>Email:</label>
     <input
       type="text"
       name="description"
@@ -11,7 +11,7 @@
     />
   </div>
   <div class="form-group">
-    <label for="price">Password:</label>
+    <label>Password:</label>
     <input
       type="password"
       name="price"
@@ -20,15 +20,15 @@
     />
   </div>
 
-  <br />
+  <br/>
   <a routerLink="/reset-password">Forgot Password?</a>
-  <br />
+  <br/>
 
   <lib-toastify-toast-container></lib-toastify-toast-container>
-  <br />
+  <br/>
   <div class="d-flex justify-content-evenly">
-    <button style="width: 30%" class="btn btn-primary">Log In</button>
-    <button style="width: 30%" class="btn btn-dark" type="reset">Reset</button>
-    <a style="width: 30%" class="btn btn-danger" routerLink="/home">Cancel</a>
+    <button class="btn btn-primary col-3">Log In</button>
+    <button class="btn btn-dark col-3" type="reset">Reset</button>
+    <a class="btn btn-danger col-3" routerLink="/home">Cancel</a>
   </div>
 </form>

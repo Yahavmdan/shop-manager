@@ -13,40 +13,40 @@ export class DataService {
     Authorization: `Bearer ${this.token}`,
   };
 
-  URL = 'http://localhost:8000/api';
+  apiURL = 'http://localhost:8000/api';
 
   constructor(private httpClient: HttpClient) {
   }
 
   getData() {
-    return this.httpClient.get(`${this.URL}/products`);
+    return this.httpClient.get(`${this.apiURL}/products`);
   }
 
   createData(data: any) {
-    return this.httpClient.post(`${this.URL}/products`, data, {
+    return this.httpClient.post(`${this.apiURL}/products`, data, {
       headers: this.header,
     });
   }
 
   editData(id: any, data: any) {
-    return this.httpClient.put(`${this.URL}/products/${id}`, data, {
+    return this.httpClient.put(`${this.apiURL}/products/${id}`, data, {
       headers: this.header,
     });
   }
 
   getById(id: any) {
-    return this.httpClient.get(`${this.URL}/products/${id}`, {
+    return this.httpClient.get(`${this.apiURL}/products/${id}`, {
       headers: this.header,
     });
   }
 
   deleteData(id: any) {
-    return this.httpClient.delete(`${this.URL}/products/${id}`, {
+    return this.httpClient.delete(`${this.apiURL}/products/${id}`, {
       headers: this.header,
     });
   }
 
-  searchData(name: any) {
-    return this.httpClient.get(`${this.URL}/products/search/${name}`);
+  searchData(searchValue: string | number) {
+    return this.httpClient.get(`${this.apiURL}/products/search/${searchValue}`);
   }
 }

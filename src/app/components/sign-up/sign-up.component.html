@@ -14,7 +14,7 @@
     <label>Email:</label>
     <input
       type="text"
-      name="description"
+      name="email"
       class="form-control"
       [(ngModel)]="user.email"
     />
@@ -24,7 +24,7 @@
     <input
       type="password"
       required="true"
-      name="price"
+      name="password"
       class="form-control"
       [(ngModel)]="user.password"
     />
@@ -33,17 +33,25 @@
     <label>Confirm Password:</label>
     <input
       type="password"
-      name="img"
+      name="confirmPassword"
       class="form-control"
       [(ngModel)]="user.password_confirmation"
+    />
+  </div>
+  <div class="form-group">
+    <label>Register as Admin?</label>
+    <input
+      type="checkbox"
+      name="is_admin"
+      [(ngModel)]="user.is_admin"
     />
   </div>
   <br />
   <lib-toastify-toast-container></lib-toastify-toast-container>
   <br />
   <div class="d-flex justify-content-evenly">
-    <button style="width: 30%" class="btn btn-primary">Sign In</button>
-    <button style="width: 30%" class="btn btn-dark" type="reset">Reset</button>
-    <a style="width: 30%" class="btn btn-danger" routerLink="/home">Cancel</a>
+    <button class="btn btn-primary col-3">Sign In</button>
+    <button class="btn btn-dark col-3" type="reset">Reset</button>
+    <a class="btn btn-danger col-3" routerLink="/home">Cancel</a>
   </div>
 </form>

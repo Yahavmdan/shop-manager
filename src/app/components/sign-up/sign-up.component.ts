@@ -6,11 +6,11 @@ import {Regexp} from "../../models/regex";
 import {AuthService} from "../../services/auth.service";
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss'],
 })
-export class SigninComponent implements OnInit {
+export class SignUpComponent implements OnInit {
   user = new User();
   token = null;
 
@@ -43,6 +43,9 @@ export class SigninComponent implements OnInit {
   }
 
   createUser(): void {
+    if (!this.user.is_admin) {
+      this.user.is_admin = false;
+    }
     if (!this.checkRegex()) {
       return;
     }
@@ -53,7 +56,7 @@ export class SigninComponent implements OnInit {
         this.token = localStorage.setItem('token', res.token);
         localStorage.setItem('name', res.user.name);
         localStorage.setItem('email', res.user.email);
-        location.href = '/products';
+        // location.href = '/products';
       })
       .catch((err) => {
         this.toast.error(err.error.message);

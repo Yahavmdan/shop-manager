@@ -11,6 +11,7 @@ import {AuthService} from "../../services/auth.service";
 })
 export class ProductsComponent implements OnInit {
   products = []
+  userType = localStorage.getItem('userType');
   token = localStorage.getItem('token');
 
   constructor(
@@ -23,8 +24,10 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.checkTokenExistence(this.token)
     this.getProductsData();
+    if (this.token) {
+      this.authService.checkTokenExistence(this.token)
+    }
   }
 
   getProductsData() {
@@ -47,11 +50,10 @@ export class ProductsComponent implements OnInit {
     this.router.navigate([`/edit/${id}`]).then();
   }
 
-  search(name: any) {
-    this.dataService.searchData(name.target.value).subscribe((res: any) => {
+  search(searchValue: string | number) {
+    this.dataService.searchData(searchValue).subscribe((res: any) => {
       this.products = res;
-
-      if (!name.target.value) {
+      if (!searchValue) {
         this.getProductsData();
       }
     });
