@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from "../../services/data.service";
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-reset-password-form',
@@ -9,14 +9,21 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ResetPasswordFormComponent implements OnInit {
 
-  token = this.route.queryParams
+  token: string;
 
-  constructor(public dataService:DataService,
+  constructor(public authService:AuthService,
               private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    localStorage.setItem('token', this.route.snapshot.params['token'])
+    this.token = this.route.snapshot.queryParams['token']
+    this.checkToken()
+  }
+
+  checkToken() {
+    if (this.authService.checkTokenExistence(this.token)) {
+      localStorage.setItem('token',this.token )
+    }
   }
 
 }

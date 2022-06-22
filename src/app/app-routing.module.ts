@@ -12,7 +12,7 @@ import { ResetPasswordComponent } from "./components/reset-password/reset-passwo
 import { ResetPasswordFormComponent } from "./components/reset-password-form/reset-password-form.component";
 import { NoPermissionComponent } from "./components/no-permission/no-permission.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
-import {SignUpComponent} from "./components/sign-up/sign-up.component";
+import { SignUpComponent } from "./components/sign-up/sign-up.component";
 
 const routes: Routes = [
   { path: '',
@@ -29,9 +29,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'reset-password-form/:token',
+    path: 'reset-password-form',
     component: ResetPasswordFormComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'edit/:id',

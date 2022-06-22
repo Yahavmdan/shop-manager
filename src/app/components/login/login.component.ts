@@ -26,10 +26,14 @@ export class LoginComponent implements OnInit {
       .logInUser(this.user)
       .toPromise()
       .then((res: any) => {
-        this.token = localStorage.setItem('token', res.token);
+        localStorage.setItem('token', res.token);
         localStorage.setItem('name', res.user.name);
-        localStorage.setItem('email', res.user.email);
-        location.href = '/home';
+        localStorage.setItem('email', res.user.email)
+        this.token = res.token;
+        this.authService.checkTokenExistence(this.token);
+        setTimeout(() => {
+          location.href = '/home';
+        }, 1000)
       })
       .catch((err) => {
         this.toast.error(err.error.message);

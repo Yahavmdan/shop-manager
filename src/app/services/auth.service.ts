@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 export class AuthService {
 
 
-  tokenExist = null
+  tokenType = null
   token = localStorage.getItem('token');
 
   header = {
@@ -27,15 +27,15 @@ export class AuthService {
     this.httpClient.post(`${this.apiURL}/check-token`, data)
       .toPromise()
       .then(res => {
-        this.tokenExist = res['responseCode'];
-        localStorage.setItem('userType', this.tokenExist);
+        this.tokenType = res['responseCode'];
+        localStorage.setItem('userType', this.tokenType);
       })
       .catch(() => {
         if (location.href !== `${this.URL}/home`) {
           this.router.navigate(['no-permission-page']).then()
         }
       })
-    return this.tokenExist < 3;
+    return this.tokenType < 3;
   }
 
   createUser(data: any) {
