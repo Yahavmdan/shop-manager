@@ -1,32 +1,36 @@
-<h1>Log in</h1>
+<h1 class="mb-4">Log in</h1>
 
 <form (ngSubmit)="logInUser()">
   <div class="form-group">
-    <label>Email:</label>
     <input
-      type="text"
-      name="description"
-      class="form-control"
+      placeholder="Email"
+      name="email"
+      type="email"
+      class="form-control my-2"
       [(ngModel)]="user.email"
     />
   </div>
-  <div class="form-group">
-    <label>Password:</label>
-    <input
-      type="password"
-      name="price"
-      class="form-control"
-      [(ngModel)]="user.password"
-    />
+  <div class="form-group my-2">
+    <div class="input-group">
+    <span class="input-group-text btn-sm" id="basic-addon1">
+      <i class="text-primary"
+         [ngClass]="this.isPasswordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"
+         (click)="setPasswordVisibility()"></i>
+    </span>
+      <input name="password"
+             [type]="this.isPasswordVisible ? 'text' : 'password'"
+             class="form-control"
+             placeholder="Password"
+             aria-label="Password"
+             aria-describedby="basic-addon1"
+             [(ngModel)]="user.password">
+    </div>
   </div>
-
-  <br/>
+<div class="my-4">
   <a routerLink="/reset-password">Forgot Password?</a>
-  <br/>
-
+</div>
   <lib-toastify-toast-container></lib-toastify-toast-container>
-  <br/>
-  <div class="d-flex justify-content-evenly">
+  <div class="d-flex justify-content-evenly mt-3">
     <button class="btn btn-primary col-3">Log In</button>
     <button class="btn btn-dark col-3" type="reset">Reset</button>
     <a class="btn btn-danger col-3" routerLink="/home">Cancel</a>

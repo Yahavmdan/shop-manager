@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
-import {AuthService} from "../services/auth.service";
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { AuthService } from "../services/auth.service";
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,11 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-    return this.authService.checkTokenExistence(this.token)
+    if (localStorage.getItem('userType') === '2' || !localStorage.getItem('userType')) {
+      this.router.navigate(['/no-permission-page']).then()
+      return false
+    }
+    return localStorage.getItem('userType') === '1';
   }
+
 }

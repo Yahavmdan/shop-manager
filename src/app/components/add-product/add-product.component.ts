@@ -33,9 +33,9 @@ export class AddProductComponent implements OnInit {
       .then((res) => {
         this.router.navigate(['/products']);
       })
-      .catch((err) => {
+      .catch(() => {
         this.isDisabled = false;
-        this.toast.error(err.error.message);
+        this.toast.error('Please make sure that you filled everything correctly')
       });
   }
 }

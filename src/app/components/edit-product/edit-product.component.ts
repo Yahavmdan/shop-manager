@@ -40,7 +40,7 @@ export class EditProductComponent implements OnInit {
       .then(() => this.router.navigate(['/products']).then())
       .catch(() => {
         this.isDisabled = false;
-        this.toast.error('Please check that you filled everything ')
+        this.toast.error('Please make sure that you filled everything correctly')
       });
   }
 }

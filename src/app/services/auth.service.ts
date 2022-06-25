@@ -23,7 +23,7 @@ export class AuthService {
   }
 
 
-  checkTokenExistence(data): boolean {
+  getAdminToken(data): boolean {
     this.httpClient.post(`${this.apiURL}/check-token`, data)
       .toPromise()
       .then(res => {
@@ -35,7 +35,7 @@ export class AuthService {
           this.router.navigate(['no-permission-page']).then()
         }
       })
-    return this.tokenType < 3;
+    return this.tokenType === 1;
   }
 
   createUser(data: any) {
@@ -54,8 +54,8 @@ export class AuthService {
     return this.httpClient.post(`${this.apiURL}/send-forgot-password-email`, email);
   }
 
-  resetPasswordForm(data) {
-    return this.httpClient.post(`${this.apiURL}/reset-password-form`, data, {
+  resetPassword(data) {
+    return this.httpClient.put(`${this.apiURL}/reset-password`, data, {
       headers: this.header,
     });
   }

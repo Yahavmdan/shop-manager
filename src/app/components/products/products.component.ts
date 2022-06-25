@@ -26,7 +26,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.getProductsData();
     if (this.token) {
-      this.authService.checkTokenExistence(this.token)
+      this.authService.getAdminToken(this.token)
     }
   }
 

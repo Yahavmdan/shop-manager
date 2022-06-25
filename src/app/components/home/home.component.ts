@@ -11,7 +11,9 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.checkTokenExistence(this.token)
+    if (this.token) {
+      this.authService.getAdminToken(this.token)
+    }
   }
 
 }

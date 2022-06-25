@@ -9,6 +9,9 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+
+  isPasswordVisible: boolean;
+
   user = new User();
   token = null;
 
@@ -21,6 +24,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setPasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
   logInUser() {
     this.authService
       .logInUser(this.user)
@@ -30,7 +37,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('name', res.user.name);
         localStorage.setItem('email', res.user.email)
         this.token = res.token;
-        this.authService.checkTokenExistence(this.token);
+        this.authService.getAdminToken(this.token);
         setTimeout(() => {
           location.href = '/home';
         }, 1000)
