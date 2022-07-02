@@ -1,66 +1,98 @@
 <h1 class="mb-4">Sign up</h1>
 
-<form (ngSubmit)="createUser()">
+<form (ngSubmit)="createUser()" [formGroup]="signUpForm">
   <div class="form-group">
     <input
-      placeholder="Name"
+      placeholder="Name *"
       type="text"
       name="name"
       class="form-control my-2"
-      [(ngModel)]="user.name"
+      formControlName="name"
+      [ngClass]="
+      !signUpForm.get('name').valid && signUpForm.get('name').touched ?
+       'bg-danger border-danger bg-opacity-25' : ''"
     />
+    <small class="text-danger" *ngIf="!signUpForm.get('name').valid
+    && signUpForm.get('name').touched">
+      Name has to be provided in English characters only
+    </small>
   </div>
   <div class="form-group">
     <input
-      placeholder="Email"
+      placeholder="Email *"
       type="text"
       name="email"
       class="form-control my-2"
-      [(ngModel)]="user.email"
+      formControlName="email"
+      [ngClass]="
+      !signUpForm.get('email').valid && signUpForm.get('email').touched
+       ? 'bg-danger border-danger bg-opacity-25' : ''"
     />
+    <small class="text-danger" *ngIf="!signUpForm.get('email').valid
+    && signUpForm.get('email').touched">
+      You have entered an invalid email address
+    </small>
   </div>
   <div class="form-group my-2">
     <div class="input-group">
-    <span class="input-group-text btn-sm" id="basic-addon1">
+    <span class="input-group-text btn-sm" id="basic-addon1" (click)="setPasswordVisibility()">
       <i class="text-primary"
-         [ngClass]="this.isPasswordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"
-         (click)="setPasswordVisibility()"></i>
+         [ngClass]="this.isPasswordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
     </span>
       <input name="password"
              [type]="this.isPasswordVisible ? 'text' : 'password'"
+             [ngClass]="!signUpForm.get('password').valid
+             && signUpForm.get('password').touched
+             ? 'bg-danger border-danger bg-opacity-25' : ''"
              class="form-control"
-             placeholder="Password"
+             placeholder="Password *"
              aria-label="Password"
              aria-describedby="basic-addon1"
-             [(ngModel)]="user.password">
+             formControlName="password">
     </div>
+    <small class="text-danger" *ngIf="!signUpForm.get('password').valid
+    && signUpForm.get('password').touched">
+      Password has to be at least 8 characters long and has to contain
+      at least 1 uppercase letter, lowercase letter, a number and a spacial sign.
+    </small>
     <div class="input-group my-2">
-    <span class="input-group-text btn-sm" id="basic-addon2">
+    <span class="input-group-text btn-sm" id="basic-addon2" (click)="setPasswordVisibility()">
       <i class="text-primary"
          [ngClass]="this.isPasswordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"
-         (click)="setPasswordVisibility()"></i>
+      ></i>
     </span>
       <input name="password"
              [type]="this.isPasswordVisible ? 'text' : 'password'"
+             [ngClass]="!signUpForm.get('password_confirmation').valid
+              && signUpForm.get('password_confirmation').touched
+              ? 'bg-danger border-danger bg-opacity-25' : ''"
              class="form-control"
-             placeholder="Confirm password"
+             placeholder="Confirm password *"
              aria-label="Password"
              aria-describedby="basic-addon2"
-             [(ngModel)]="user.password_confirmation">
+             formControlName="password_confirmation">
     </div>
+    <small class="text-danger" *ngIf="!signUpForm.get('password_confirmation').valid
+    && signUpForm.get('password_confirmation').touched">
+      Password has to be at least 8 characters long and has to contain
+      at least 1 uppercase letter, lowercase letter, a number and a spacial sign.
+    </small>
   </div>
   <div class="form-group my-3">
     <input
       type="checkbox"
       name="is_admin"
-      [(ngModel)]="user.is_admin"
+      formControlName="is_admin"
     />
-    <label class="mx-2">Register as Admin?</label>
+    <label class="mx-2">Check to register as an Admin</label>
+    <br>
+    <small class="link-primary" style="cursor: pointer;" routerLink="/login">Already have an account?</small>
   </div>
-  <lib-toastify-toast-container></lib-toastify-toast-container>
   <div class="d-flex justify-content-evenly">
-    <button class="btn btn-primary col-3">Sign In</button>
+    <button class="btn btn-primary col-3" type="submit">Sign In</button>
     <button class="btn btn-dark col-3" type="reset">Reset</button>
     <a class="btn btn-danger col-3" routerLink="/home">Cancel</a>
   </div>
 </form>
+<lib-toastify-toast-container></lib-toastify-toast-container>
+

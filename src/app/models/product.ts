@@ -3,5 +3,4 @@ export class Product {
   description: any;
   price: any;
   img?: any;
-  is_favorite?: boolean;
 }

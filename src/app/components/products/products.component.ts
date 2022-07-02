@@ -10,9 +10,10 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
+
   products = []
-  userType = localStorage.getItem('userType');
-  token = localStorage.getItem('token');
+  userType = sessionStorage.getItem('userType');
+  token = sessionStorage.getItem('token');
 
   constructor(
     private toast: ToastService,
@@ -26,7 +27,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.getProductsData();
     if (this.token) {
-      this.authService.getAdminToken(this.token)
+      this.authService.getTokenType(this.token)
     }
   }
 
@@ -58,4 +59,9 @@ export class ProductsComponent implements OnInit {
       }
     });
   }
+
+  setFavorite(product) {
+    localStorage.setItem(product.id, JSON.stringify(product))
+  }
+
 }

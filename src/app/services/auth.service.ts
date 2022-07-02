@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {BehaviorSubject, Observable} from "rxjs";
+import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-
+  user$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   tokenType = null
-  token = localStorage.getItem('token');
 
   header = {
     Accept: 'application/json',
@@ -22,13 +23,17 @@ export class AuthService {
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
+  get token(): string | null {
+    return sessionStorage.getItem('token');
+  }
 
-  getAdminToken(data): boolean {
+  getTokenType(data): boolean | Promise<boolean> {
     this.httpClient.post(`${this.apiURL}/check-token`, data)
       .toPromise()
       .then(res => {
         this.tokenType = res['responseCode'];
-        localStorage.setItem('userType', this.tokenType);
+        this.user$.next(this.tokenType);
+        sessionStorage.setItem('userType', this.tokenType);
       })
       .catch(() => {
         if (location.href !== `${this.URL}/home`) {
@@ -38,14 +43,15 @@ export class AuthService {
     return this.tokenType === 1;
   }
 
-  createUser(data: any) {
-    return this.httpClient.post(`${this.apiURL}/register`, data, {
+
+  createUser(data: any): Observable<{ user: User, token: string }> {
+    return this.httpClient.post<{ user: User, token: string }>(`${this.apiURL}/register`, data, {
       headers: this.header,
     });
   }
 
-  logInUser(data: any) {
-    return this.httpClient.post(`${this.apiURL}/login`, data, {
+  logInUser(data: any): Observable<{ user: User, token: string }> {
+    return this.httpClient.post<{ user: User, token: string }>(`${this.apiURL}/login`, data, {
       headers: this.header,
     });
   }

@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class DataService {
 
-  token = localStorage.getItem('token');
+  token = sessionStorage.getItem('token');
 
   header = {
     Accept: 'application/json',

@@ -12,10 +12,9 @@
   </div>
   <div class="form-group my-2">
     <div class="input-group">
-    <span class="input-group-text btn-sm" id="basic-addon1">
+    <span class="input-group-text btn-sm" id="basic-addon1" (click)="setPasswordVisibility()">
       <i class="text-primary"
-         [ngClass]="this.isPasswordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"
-         (click)="setPasswordVisibility()"></i>
+         [ngClass]="this.isPasswordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
     </span>
       <input name="password"
              [type]="this.isPasswordVisible ? 'text' : 'password'"
@@ -27,7 +26,7 @@
     </div>
   </div>
 <div class="my-4">
-  <a routerLink="/reset-password">Forgot Password?</a>
+  <small class="link-primary" style="cursor: pointer;" routerLink="/reset-password">Forgot Password?</small>
 </div>
   <lib-toastify-toast-container></lib-toastify-toast-container>
   <div class="d-flex justify-content-evenly mt-3">

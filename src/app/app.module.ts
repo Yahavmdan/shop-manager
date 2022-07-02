@@ -6,7 +6,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductComponent } from './components/add-product/add-product.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { HomeComponent } from './components/home/home.component';
 import { TaskComponent } from './components/task/task.component';
@@ -20,6 +20,7 @@ import { ResetPasswordFormComponent } from './components/reset-password-form/res
 import { NoPermissionComponent } from './components/no-permission/no-permission.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     NoPermissionComponent,
     PageNotFoundComponent,
     SignUpComponent,
+    FavoritesComponent,
   ],
   imports: [
     HttpClientModule,
@@ -47,6 +49,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     AppRoutingModule,
     AngularToastifyModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ToastService],
   bootstrap: [AppComponent],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-user-details',
@@ -13,8 +14,8 @@ export class UserDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.userEmail = localStorage.getItem('email')
-    this.userName =  localStorage.getItem('name')
+    this.userEmail = sessionStorage.getItem('email')
+    this.userName =  sessionStorage.getItem('name')
   }
 
 }

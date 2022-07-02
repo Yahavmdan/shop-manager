@@ -29,8 +29,11 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/products">Products</a>
         </li>
-        <li *ngIf="userType === '1'" class="nav-item">
+        <li *ngIf="userType === 1" class="nav-item">
           <a class="nav-link" routerLink="/add-product">Add a Product</a>
+        </li>
+        <li *ngIf="userType" class="nav-item">
+          <a class="nav-link" routerLink="/favorites">Favorites</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -47,12 +50,12 @@
           type="submit"
         >Sign-up</a>
         <a
-          *ngIf="userType === '1' || userType === '2'"
+          *ngIf="userType === 1 || userType === 2"
           class="nav-link btn btn-outline-primary m-1"
           routerLink="/user-details"
         >User details</a>
         <a
-          *ngIf="userType === '1' || userType === '2'"
+          *ngIf="userType === 1 || userType === 2"
           (click)="logout()"
           class="btn btn-outline-danger m-1"
           type="submit"

@@ -1,18 +1,20 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService} from 'src/app/services/data.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Product} from 'src/app/models/product';
-import {ToastService} from 'angular-toastify';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/models/product';
+import { ToastService } from 'angular-toastify';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.scss'],
 })
 export class EditProductComponent implements OnInit {
+
   isDisabled:boolean = false;
   product = new Product();
   id = this.route.snapshot.params['id'];
   data: any;
+
   constructor(
     private dataService: DataService,
     private router: Router,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-home',
@@ -7,12 +7,12 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  token = localStorage.getItem('token')
+  token = sessionStorage.getItem('token')
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     if (this.token) {
-      this.authService.getAdminToken(this.token)
+      this.authService.getTokenType(this.token)
     }
   }
 

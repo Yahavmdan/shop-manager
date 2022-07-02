@@ -28,9 +28,9 @@
                 (click)="deleteData(product.id)"></button>
         <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-pencil btn btn-primary col-4 btn-sm"
                 (click)="goToEdit(product.id)"></button>
-        <button style="z-index: 2;" *ngIf="userType === '1' || userType === '2'" class="bi bi-star btn btn-warning btn-sm"
-                [ngClass]="{'col-4' : userType !== '2'}"
-                (click)="goToEdit(product.id)"></button>
+        <button *ngIf="userType === '1' || userType === '2'" style="z-index: 2;" class="bi bi-star btn btn-warning btn-sm"
+                [ngClass]="userType === '1' ? 'col-4' : 'col-12'"
+                (click)="setFavorite(product)"></button>
       </div>
       <img class="card-img-top"
            style=" filter: grayscale(75%); z-index: 1;"
