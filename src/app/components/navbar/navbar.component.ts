@@ -29,6 +29,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout() {
     sessionStorage.clear();
-    this.router.navigate(['/home'])
+    location.href = '/home'
   }
 }

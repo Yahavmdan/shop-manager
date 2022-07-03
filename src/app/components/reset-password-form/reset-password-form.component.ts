@@ -25,8 +25,16 @@ export class ResetPasswordFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.token = this.route.snapshot.queryParams['token']
-    sessionStorage.setItem('token' , this.token);
+    if (this.route.snapshot.queryParams['token']) {
+      this.token = this.route.snapshot.queryParams['token']
+      sessionStorage.setItem('token' , this.token);
+      this.authService.getTokenType(this.token)
+    }
+    if (sessionStorage.getItem('token')) {
+      this.token = sessionStorage.getItem('token')
+      this.authService.getTokenType(this.token)
+    }
+    this.authService.getTokenType(this.token)
   }
 
   setPasswordVisibility() {

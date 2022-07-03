@@ -45,9 +45,9 @@
       />
       <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
-        <p *ngIf="product.description" class="card-text">- {{ product.description }}</p>
-        <p *ngIf="userType === '1'" class="card-text">- {{ product.price }}$</p>
-        <small *ngIf="userType === '1'" class="card-text">- Product id {{ product.id }}</small>
+        <li *ngIf="product.description" class="card-text">{{ product.description }}</li>
+        <li *ngIf="userType === '1'" class="card-text">{{ product.price }}$</li>
+        <li *ngIf="userType === '1'" class="card-text">Product id {{ product.id }}</li>
       </div>
       <div class="d-flex justify-content-center mb-3">
         <button class="bi bi-bag-fill btn btn-success col-7" (click)="goToEdit(product.id)">

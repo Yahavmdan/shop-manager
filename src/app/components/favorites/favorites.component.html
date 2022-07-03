@@ -13,7 +13,6 @@
     <div class="card bg-light my-2 overflow-hidden" style="width: 15rem; height: 25rem;">
       <div class="d-flex gap-1 position-absolute m-1">
         <button *ngIf="userType === '1' || userType === '2'" style="z-index: 2;" type="checkbox" class="bi bi-x-circle-fill btn btn-danger btn-sm"
-                [ngClass]="{'col-4' : userType !== '2'}"
                 (click)="removeFavorite(favoriteProduct)"></button>
       </div>
       <img class="card-img-top"
