@@ -3,9 +3,8 @@ import { User } from 'src/app/models/user';
 import { ToastService } from 'angular-toastify';
 import { Regexp } from "../../models/regex";
 import { AuthService } from "../../services/auth.service";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Observable } from 'rxjs';
-import {Router} from "@angular/router";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +15,7 @@ export class SignUpComponent implements OnInit {
 
   isPasswordVisible: boolean;
 
-  signUpForm: FormGroup
+  signUpForm: UntypedFormGroup
 
   user = new User();
   token = null;
@@ -25,7 +24,7 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private toast: ToastService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) { }
 
   ngOnInit() {
@@ -34,7 +33,7 @@ export class SignUpComponent implements OnInit {
       'password':              [ null, [Validators.required, Validators.pattern(Regexp.password)] ],
       'password_confirmation': [ null, [Validators.required, Validators.pattern(Regexp.password)] ],
       'email':                 [ null, [Validators.required, Validators.pattern(Regexp.email)] ],
-      'is_admin':              [ null ]
+      'is_admin':              [ null ],
     });
     this.signUpForm.markAsUntouched()
   }
@@ -56,7 +55,7 @@ export class SignUpComponent implements OnInit {
       this.router.navigate(['/home'])
       return res;
     } catch (err) {
-      this.toast.error(err.error.message);
+      console.log('dfs')
       return err;
     }
   }

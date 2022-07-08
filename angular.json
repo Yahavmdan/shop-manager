@@ -26,7 +26,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.png", "src/assets"],
+            "assets": ["src/favicon.png", "src/assets","C:/xampp/htdocs/task-smartik/api/storage/app/public/profilePics/"],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css"
@@ -100,5 +100,7 @@
       }
     }
   },
-  "defaultProject": "front"
+  "cli": {
+    "analytics": false
+  }
 }

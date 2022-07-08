@@ -5,4 +5,5 @@ export class User {
   password_confirmation: any;
   is_admin?: boolean;
   id: any;
+  img: string;
 }

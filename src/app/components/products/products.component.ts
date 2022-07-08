@@ -60,6 +60,11 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  sortProduct(data) {
+    console.log(data);
+
+  }
+
   setFavorite(product) {
     localStorage.setItem(product.id, JSON.stringify(product))
   }

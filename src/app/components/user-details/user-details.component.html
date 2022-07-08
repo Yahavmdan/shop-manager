@@ -1,5 +1,16 @@
 <h1>Hello {{userName}}</h1>
 
 <p>
-Your email: {{userEmail}}
+  Your email: {{userEmail}}
 </p>
+<form style="background-color: #fafffe; padding: 20px; border-radius: 20px; box-shadow: 0 15px 29px 0 #DBDBDB;"
+      (ngSubmit)="onSubmit()" [formGroup]="uploadForm">
+  <div class="mb-3 form-group">
+    <small>Upload profile picture</small>
+    <input (change)="fileName($event)" formControlName="img" class="form-control" type="file" id="formFile">
+  </div>
+  <button type="submit" class="btn btn-primary">Upload!</button>
+  <br>
+  <img src="" alt="icon">
+  <lib-toastify-toast-container></lib-toastify-toast-container>
+</form>

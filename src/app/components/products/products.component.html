@@ -6,11 +6,20 @@
         type="text"
         (input)="search(searchInput.value)"
         placeholder="Search product..."
-        class="w-100 form-control form-control-lg mt-4"
+        class="w-100 form-control form-control-lg mt-4 mb-2"
       />
     </div>
   </div>
-  <br/>
+<!--  <div>-->
+<!--    <div (change)="sortProduct($event)" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">-->
+<!--      <div class="btn-group me-2" role="group" aria-label="First group">-->
+<!--        <input  type="radio" value="name" class="border-primary btn btn-light">Name-->
+<!--        <input  type="radio" value="price" class="border-primary btn btn-light">Price-->
+<!--        <input  type="radio" value="created" class="border-primary btn btn-light">Created-->
+<!--        <input  type="radio" value="edited" class="border-primary btn btn-light">Edited-->
+<!--      </div>-->
+<!--      <br>-->
+<!--  </div>-->
   <lib-toastify-toast-container></lib-toastify-toast-container>
   <div *ngIf="!products?.length" class="alert alert-danger" role="alert">
     There are no products, click to add one...

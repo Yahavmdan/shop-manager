@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { Regexp } from "../../models/regex";
 
 @Component({
@@ -15,14 +15,14 @@ export class EditProductComponent implements OnInit {
   isDisabled: boolean = false;
   product
   id = this.route.snapshot.params['id'];
-  editProductForm: FormGroup
+  editProductForm: UntypedFormGroup
 
   constructor(
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute,
     private toast: ToastService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {}
 
   ngOnInit() {

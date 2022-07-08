@@ -3,7 +3,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
 import { AuthService } from "../../services/auth.service";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { Regexp } from "../../models/regex";
 
 @Component({
@@ -14,14 +14,14 @@ import { Regexp } from "../../models/regex";
 export class AddProductComponent implements OnInit {
 
   isDisabled: boolean = false;
-  addProductForm: FormGroup
+  addProductForm: UntypedFormGroup
 
   constructor(
     private authService: AuthService,
     private dataService: DataService,
     private toast: ToastService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
   }
 
