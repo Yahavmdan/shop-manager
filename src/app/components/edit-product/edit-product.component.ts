@@ -48,6 +48,10 @@ export class EditProductComponent implements OnInit {
   }
 
   editData() {
+    if (this.editProductForm.invalid) {
+      this.toast.error('Please make sure that you filled everything correctly')
+      return;
+    }
     this.editProductForm.markAllAsTouched()
     this.isDisabled = true;
     this.dataService

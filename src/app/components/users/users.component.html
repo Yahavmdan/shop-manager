@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <input
+        #searchInput
+        type="text"
+        (input)="search(searchInput.value)"
+        placeholder="Search user..."
+        class="w-100 form-control form-control-lg mt-4 mb-2"
+      />
+    </div>
+  </div>
+  <lib-toastify-toast-container></lib-toastify-toast-container>
+  <button *ngIf="userType === '1'" class="bi bi-plus-circle-fill btn btn-primary w-100" routerLink="/sign-up">
+    Add user
+  </button>
+</div>
+<br/>
+<div class="d-flex flex-row flex-wrap justify-content-evenly gap-2">
+  <div *ngFor="let user of users">
+    <div class="card bg-light my-2 overflow-hidden" style="width: 15rem; height: 25rem;">
+      <div class="d-flex gap-1 position-absolute m-1">
+        <button *ngIf="user.is_admin === '0'" style="z-index: 2;" class="bi bi-trash3 btn btn-danger btn-sm"
+                (click)="deleteUserData(user.id)"></button>
+        <button style="z-index: 2;" class="bi bi-pencil btn btn-primary btn-sm"
+                (click)="goToEdit(user.id)"></button>
+      </div>
+      <div *ngIf="user.is_admin === '1'" style="z-index: 2; width: 100px; height: 20px; background-color: crimson; bottom: 250px;
+      color: #DBDBDB" class="position-absolute pl-1 pb-1">Admin</div>
+      <div *ngIf="user.is_admin === '0'" style="z-index: 2; width: 100px; height: 20px; background-color: #4764ff; bottom: 250px;
+      color: #DBDBDB" class="position-absolute pl-1 pb-1">User</div>
+      <img class="card-img-top"
+           style=" filter: grayscale(75%); z-index: 1;"
+           *ngIf="!user.img"
+           src="data:image/png;base64,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"/>
+      <div class="card-body">
+        <h5 class="card-title">{{ user.name }}</h5>
+        <li class="card-text">{{ user.email }}</li>
+        <li class="card-text">User id > {{ user.id }}</li>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+      </div>
+    </div>
+  </div>
+</div>

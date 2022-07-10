@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService} from 'src/app/services/data.service';
-import {Router} from '@angular/router';
-import {ToastService} from 'angular-toastify';
-import {AuthService} from "../../services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { Router } from '@angular/router';
+import { ToastService } from 'angular-toastify';
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-products',
@@ -11,6 +11,7 @@ import {AuthService} from "../../services/auth.service";
 })
 export class ProductsComponent implements OnInit {
 
+  allProducts = []
   products = []
   userType = sessionStorage.getItem('userType');
   token = sessionStorage.getItem('token');
@@ -55,14 +56,9 @@ export class ProductsComponent implements OnInit {
     this.dataService.searchData(searchValue).subscribe((res: any) => {
       this.products = res;
       if (!searchValue) {
-        this.getProductsData();
+        this.products = this.allProducts;
       }
     });
-  }
-
-  sortProduct(data) {
-    console.log(data);
-
   }
 
   setFavorite(product) {

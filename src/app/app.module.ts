@@ -21,6 +21,8 @@ import { NoPermissionComponent } from './components/no-permission/no-permission.
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { UsersComponent } from './components/users/users.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     PageNotFoundComponent,
     SignUpComponent,
     FavoritesComponent,
+    UsersComponent,
+    EditUserComponent,
   ],
   imports: [
     HttpClientModule,

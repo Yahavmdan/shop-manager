@@ -32,8 +32,11 @@
         <li *ngIf="userType === 1" class="nav-item">
           <a class="nav-link" routerLink="/add-product">Add a Product</a>
         </li>
-        <li *ngIf="userType" class="nav-item">
+        <li *ngIf="userType === 1 || userType === 2" class="nav-item">
           <a class="nav-link" routerLink="/favorites">Favorites</a>
+        </li>
+        <li *ngIf="userType === 1" class="nav-item">
+          <a class="nav-link" routerLink="/users">Manage Users</a>
         </li>
       </ul>
       <form class="d-flex">

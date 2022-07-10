@@ -49,4 +49,37 @@ export class DataService {
   searchData(searchValue: string | number) {
     return this.httpClient.get(`${this.apiURL}/products/search/${searchValue}`);
   }
+
+  /// User Data routes ///
+
+  getUsersData() {
+    return this.httpClient.get(`${this.apiURL}/users`, {
+      headers: this.header,
+    });
+  }
+
+
+  deleteUserData(id: any) {
+    return this.httpClient.delete(`${this.apiURL}/users/${id}`, {
+      headers: this.header,
+    });
+  }
+
+  searchUserData(searchValue: string | number) {
+    return this.httpClient.get(`${this.apiURL}/users/search/${searchValue}`, {
+      headers: this.header,
+    });
+  }
+
+  editUserData(id: any, data: any) {
+    return this.httpClient.put(`${this.apiURL}/users/${id}`, data, {
+      headers: this.header,
+    });
+  }
+
+  getUserById(id: any) {
+    return this.httpClient.get(`${this.apiURL}/users/${id}`, {
+      headers: this.header,
+    });
+  }
 }

@@ -55,7 +55,7 @@ export class SignUpComponent implements OnInit {
       this.router.navigate(['/home'])
       return res;
     } catch (err) {
-      console.log('dfs')
+      this.toast.error(err);
       return err;
     }
   }

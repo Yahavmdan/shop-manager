@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
 import { SignUpComponent } from "./components/sign-up/sign-up.component";
 import { FavoritesComponent } from "./components/favorites/favorites.component";
 import { UserGuard } from "./guards/user.guard";
+import {UsersComponent} from "./components/users/users.component";
+import {EditUserComponent} from "./components/edit-user/edit-user.component";
 
 //todo make separate guard for non admin user
 
@@ -33,12 +35,22 @@ const routes: Routes = [
     canActivate: [AdminGuard],
   },
   {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AdminGuard],
+  },
+  {
     path: 'reset-password-form',
     component: ResetPasswordFormComponent,
   },
   {
     path: 'edit/:id',
     component: EditProductComponent,
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'edit-user/:id',
+    component: EditUserComponent,
     canActivate: [AdminGuard],
   },
   {
