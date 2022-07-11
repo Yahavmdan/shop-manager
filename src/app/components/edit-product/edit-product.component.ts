@@ -32,7 +32,7 @@ export class EditProductComponent implements OnInit {
     this.editProductForm = this.fb.group({
       'name':        [ null, [Validators.required, Validators.pattern(Regexp.name)] ],
       'description': [ null, [Validators.pattern('^[a-z]{0,15}$')] ],
-      'price':       [ null, [Validators.required, Validators.pattern(Regexp.numbers)] ],
+      'price':       [ null, [Validators.required] ],
       'img':         [ null ],
     });
 
