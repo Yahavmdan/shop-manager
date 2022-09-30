@@ -17,8 +17,8 @@ export class AuthService {
     Authorization: `Bearer ${this.token}`,
   };
 
-  URL = 'http://localhost:4200'
-  apiURL = 'http://localhost:8000/api';
+  URL = 'https://shop-manager-352819.web.app'
+  apiURL = 'https://api-production-2703.up.railway.app/api'
 
   constructor(private httpClient: HttpClient, private router: Router) {
   }

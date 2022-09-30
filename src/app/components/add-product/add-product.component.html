@@ -1,19 +1,19 @@
 <div class="d-flex flex-column align-items-center">
 <h3>Add a product</h3>
 <form style="background-color: #fafffe; padding: 20px; border-radius: 20px; box-shadow: 0px 15px 29px 0px #DBDBDB;" (ngSubmit)="createData()" [formGroup]="addProductForm"
-      class="d-flex flex-column w-75 gap-3">
+      class="d-flex flex-column col-lg-7 col-12 gap-3">
   <div class="form-group">
     <input
       formControlName="name"
       placeholder="Name of product *"
       type="text"
       name="name"
-      class="form-control my-2"
+      class="form-control mt-2"
       [ngClass]="
       !addProductForm.get('name').valid && addProductForm.get('name').touched ?
        'bg-danger border-danger bg-opacity-25' : ''"
     />
-    <small class="text-danger" *ngIf="!addProductForm.get('name').valid
+    <small class="text-danger input-error" *ngIf="!addProductForm.get('name').valid
     && addProductForm.get('name').touched">
       Name of product is required and needs to be provided in English
     </small>
@@ -21,17 +21,17 @@
   <div class="form-group">
     <input
       formControlName="description"
-      placeholder="Description (15 characters max)"
+      placeholder="Description *"
       type="text"
       name="description"
-      class="form-control my-2"
+      class="form-control mt-2"
       [ngClass]="
       !addProductForm.get('description').valid && addProductForm.get('description').touched ?
        'bg-danger border-danger bg-opacity-25' : ''"
     />
-    <small class="text-danger" *ngIf="!addProductForm.get('description').valid
+    <small class="text-danger input-error" *ngIf="!addProductForm.get('description').valid
     && addProductForm.get('description').touched">
-      Description cannot contain more than 15 characters
+      Description is required
     </small>
   </div>
   <div class="form-group">
@@ -40,12 +40,12 @@
       placeholder="Price *"
       type="number"
       name="price"
-      class="form-control my-2"
+      class="form-control mt-2"
       [ngClass]="
       !addProductForm.get('price').valid && addProductForm.get('price').touched ?
        'bg-danger border-danger bg-opacity-25' : ''"
     />
-    <small class="text-danger" *ngIf="!addProductForm.get('price').valid
+    <small class="text-danger input-error" *ngIf="!addProductForm.get('price').valid
     && addProductForm.get('price').touched">
       Price of product is required and needs to be provided in numbers
     </small>
@@ -56,7 +56,7 @@
       placeholder="Image(URL)"
       type="text"
       name="img"
-      class="form-control my-2"
+      class="form-control mt-2"
     />
   </div>
   <lib-toastify-toast-container></lib-toastify-toast-container>

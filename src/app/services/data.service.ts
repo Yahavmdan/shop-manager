@@ -13,7 +13,7 @@ export class DataService {
     Authorization: `Bearer ${this.token}`,
   };
 
-  apiURL = 'http://localhost:8000/api';
+  apiURL = 'https://api-production-2703.up.railway.app/api'
 
   constructor(private httpClient: HttpClient) {
   }

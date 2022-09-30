@@ -53,10 +53,9 @@
         alt="{{ product.name }}"
       />
       <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <li *ngIf="product.description" class="card-text">{{ product.description }}</li>
-        <li *ngIf="userType === '1'" class="card-text">{{ product.price }}$</li>
-        <li *ngIf="userType === '1'" class="card-text">Product id {{ product.id }}</li>
+        <h5 class="card-title truncate">{{ product.name }}</h5>
+        <div *ngIf="product.description" class="card-text description-box overflow-auto">{{ product.description }}</div>
+        <li *ngIf="userType === '1'" class="card-text">Product number {{ product.id }}</li>
       </div>
       <div class="d-flex justify-content-center mb-3">
         <button class="bi bi-bag-fill btn btn-success col-7" (click)="goToEdit(product.id)">

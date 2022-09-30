@@ -9,12 +9,12 @@
       placeholder="Name of product *"
       type="text"
       name="name"
-      class="form-control my-2"
+      class="form-control mt-2"
       [ngClass]="
       !editProductForm.get('name').valid && editProductForm.get('name').touched ?
        'bg-danger border-danger bg-opacity-25' : ''"
     />
-    <small class="text-danger" *ngIf="!editProductForm.get('name').valid
+    <small class="text-danger input-error" *ngIf="!editProductForm.get('name').valid
     && editProductForm.get('name').touched">
       Name of product is required and needs to be provided in English
     </small>
@@ -22,17 +22,17 @@
   <div class="form-group">
     <input
       formControlName="description"
-      placeholder="Description (15 characters max)"
+      placeholder="Description *"
       type="text"
       name="description"
-      class="form-control my-2"
+      class="form-control mt-2"
       [ngClass]="
       !editProductForm.get('description').valid && editProductForm.get('description').touched ?
        'bg-danger border-danger bg-opacity-25' : ''"
     />
-    <small class="text-danger" *ngIf="!editProductForm.get('description').valid
+    <small class="text-danger input-error" *ngIf="!editProductForm.get('description').valid
     && editProductForm.get('description').touched">
-      Description cannot contain more than 15 characters
+      Description is required
     </small>
   </div>
   <div class="form-group">
@@ -41,12 +41,12 @@
       placeholder="Price *"
       type="number"
       name="price"
-      class="form-control my-2"
+      class="form-control mt-2"
       [ngClass]="
       !editProductForm.get('price').valid && editProductForm.get('price').touched ?
        'bg-danger border-danger bg-opacity-25' : ''"
     />
-    <small class="text-danger" *ngIf="!editProductForm.get('price').valid
+    <small class="text-danger input-error" *ngIf="!editProductForm.get('price').valid
     && editProductForm.get('price').touched">
       Price of product is required and needs to be provided in numbers
     </small>
@@ -57,7 +57,7 @@
       placeholder="Image(URL)"
       type="text"
       name="img"
-      class="form-control my-2"
+      class="form-control mt-2"
     />
   </div>
   <lib-toastify-toast-container></lib-toastify-toast-container>

@@ -28,7 +28,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this.addProductForm = this.fb.group({
       'name':        [ null, [Validators.required, Validators.pattern(Regexp.name)] ],
-      'description': [ null, [Validators.pattern('^[a-z]{0,15}$')] ],
+      'description': [ null, [Validators.required] ],
       'price':       [ null, [Validators.required] ],
       'img':         [ null ],
     });
