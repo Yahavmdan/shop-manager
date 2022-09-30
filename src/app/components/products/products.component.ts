@@ -35,6 +35,7 @@ export class ProductsComponent implements OnInit {
   getProductsData() {
     this.dataService.getData().subscribe((res: any) => {
       this.products = res;
+      this.allProducts = res;
     });
   }
 
@@ -55,7 +56,6 @@ export class ProductsComponent implements OnInit {
   search(searchValue: string | number) {
     this.dataService.searchData(searchValue).subscribe((res: any) => {
       this.products = res;
-      console.log(res)
       if (!searchValue) {
         this.products = this.allProducts;
       }
