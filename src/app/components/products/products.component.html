@@ -10,16 +10,6 @@
       />
     </div>
   </div>
-<!--  <div>-->
-<!--    <div (change)="sortProduct($event)" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">-->
-<!--      <div class="btn-group me-2" role="group" aria-label="First group">-->
-<!--        <input  type="radio" value="name" class="border-primary btn btn-light">Name-->
-<!--        <input  type="radio" value="price" class="border-primary btn btn-light">Price-->
-<!--        <input  type="radio" value="created" class="border-primary btn btn-light">Created-->
-<!--        <input  type="radio" value="edited" class="border-primary btn btn-light">Edited-->
-<!--      </div>-->
-<!--      <br>-->
-<!--  </div>-->
   <lib-toastify-toast-container></lib-toastify-toast-container>
   <div *ngIf="!products?.length" class="alert alert-danger" role="alert">
     There are no products, click to add one...
@@ -33,11 +23,11 @@
   <div *ngFor="let product of products">
     <div class="card bg-light my-2 overflow-hidden" style="width: 15rem; height: 25rem;">
       <div class="d-flex gap-1 position-absolute m-1">
-        <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-trash3 btn btn-danger col-4 btn-sm"
+        <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-trash3 button-layout bg-red text-white col-4 btn-sm"
                 (click)="deleteData(product.id)"></button>
-        <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-pencil btn btn-primary col-4 btn-sm"
+        <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-pencil button-layout bg-blue text-white col-4 btn-sm"
                 (click)="goToEdit(product.id)"></button>
-        <button *ngIf="userType === '1' || userType === '2'" style="z-index: 2;" class="bi bi-star btn btn-warning btn-sm"
+        <button *ngIf="userType === '1' || userType === '2'" style="z-index: 2;" class="bi bi-star button-layout bg-yellow text-white btn-sm"
                 [ngClass]="userType === '1' ? 'col-4' : 'col-12'"
                 (click)="setFavorite(product)"></button>
       </div>
@@ -58,8 +48,8 @@
         <li *ngIf="userType === '1'" class="card-text">Product number {{ product.id }}</li>
       </div>
       <div class="d-flex justify-content-center mb-3">
-        <button class="bi bi-bag-fill btn btn-success col-7" (click)="goToEdit(product.id)">
-          {{ product.price }}$
+        <button class="button-layout bg-green col-7" (click)="goToEdit(product.id)">
+          <i class="bi bi-bag-fill mx-1"></i> {{ product.price }}$
         </button>
       </div>
     </div>

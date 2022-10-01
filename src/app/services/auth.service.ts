@@ -1,8 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {BehaviorSubject, Observable} from "rxjs";
-import {User} from "../models/user";
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Router} from "@angular/router";
+import { BehaviorSubject, Observable } from "rxjs";
+import { User} from "../models/user";
+import { environmentUrl } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class AuthService {
     Authorization: `Bearer ${this.token}`,
   };
 
-  URL = 'https://shop-manager-352819.web.app'
-  apiURL = 'https://api-production-2703.up.railway.app/api'
+  URL = environmentUrl.client
+  apiURL = environmentUrl.api
 
   constructor(private httpClient: HttpClient, private router: Router) {
   }

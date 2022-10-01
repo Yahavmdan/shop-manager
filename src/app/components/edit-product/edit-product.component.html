@@ -1,7 +1,6 @@
 <div class="d-flex flex-column align-items-center">
 <h3>Edit a product</h3>
-<form class="d-flex flex-column w-75 gap-3"
-      style="background-color: #fafffe; padding: 20px; border-radius: 20px; box-shadow: 0px 15px 29px 0px #DBDBDB;"
+<form class="d-flex flex-column col-lg-7 col-12 gap-3 form-container"
       (ngSubmit)="editData()" [formGroup]="editProductForm">
   <div class="form-group">
     <input
@@ -62,9 +61,9 @@
   </div>
   <lib-toastify-toast-container></lib-toastify-toast-container>
   <div class="d-flex justify-content-evenly">
-    <button [disabled]="isDisabled" class="btn btn-primary w-25" type="submit">Submit</button>
-    <button class="btn btn-dark w-25" type="reset">Reset</button>
-    <button class="btn btn-danger w-25" routerLink="/products">Cancel</button>
+    <button [disabled]="isDisabled" class="button-layout bg-green col-3" type="submit">Submit</button>
+    <button class="button-layout bg-light-grey col-3" type="reset">Reset</button>
+    <button class="button-layout bg-red col-3" routerLink="/products">Cancel</button>
   </div>
 </form>
 </div>

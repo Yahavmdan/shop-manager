@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { environmentUrl } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class FilesService {
     Authorization: `Bearer ${this.token}`,
   };
 
-  apiURL = 'https://api-production-2703.up.railway.app/api'
+  apiURL = environmentUrl.api
 
   constructor(private httpClient: HttpClient) {
   }

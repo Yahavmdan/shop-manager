@@ -20,9 +20,9 @@
   <div *ngFor="let user of users">
     <div class="card bg-light my-2 overflow-hidden" style="width: 15rem; height: 25rem;">
       <div class="d-flex gap-1 position-absolute m-1">
-        <button *ngIf="user.is_admin === '0'" style="z-index: 2;" class="bi bi-trash3 btn btn-danger btn-sm"
+        <button *ngIf="user.is_admin === '0'" style="z-index: 2;" class="bi bi-trash3 button-layout bg-red text-white btn-sm"
                 (click)="deleteUserData(user.id)"></button>
-        <button style="z-index: 2;" class="bi bi-pencil btn btn-primary btn-sm"
+        <button style="z-index: 2;" class="bi bi-pencil button-layout bg-blue text-white btn-sm"
                 (click)="goToEdit(user.id)"></button>
       </div>
       <div *ngIf="user.is_admin === '1'" style="z-index: 2; width: 100px; height: 20px; background-color: crimson; bottom: 250px;

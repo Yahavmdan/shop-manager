@@ -3,7 +3,7 @@
   <div *ngIf="!favoriteProducts?.length" class="alert alert-danger" role="alert">
     There are no favorite products...
   </div>
-  <button *ngIf="userType" class="btn btn-primary w-100" routerLink="/products">
+  <button *ngIf="userType" class="btn bg-green w-100 text-white" routerLink="/products">
     Go to products
   </button>
 </div>
@@ -12,7 +12,7 @@
   <div *ngFor="let favoriteProduct of favoriteProducts">
     <div class="card bg-light my-2 overflow-hidden" style="width: 15rem; height: 25rem;">
       <div class="d-flex gap-1 position-absolute m-1">
-        <button *ngIf="userType === '1' || userType === '2'" style="z-index: 2;" type="checkbox" class="bi bi-x-circle-fill btn btn-danger btn-sm"
+        <button *ngIf="userType === '1' || userType === '2'" style="z-index: 2;" type="checkbox" class="text-white bi bi-x-circle-fill button-layout bg-red btn-sm"
                 (click)="removeFavorite(favoriteProduct)"></button>
       </div>
       <img class="card-img-top"
@@ -33,8 +33,8 @@
         <small *ngIf="userType === '1'" class="card-text">- Product id {{ favoriteProduct.id }}</small>
       </div>
       <div class="d-flex justify-content-center mb-3">
-        <button class="bi bi-bag-fill btn btn-success col-7">
-          {{ favoriteProduct.price }}$
+        <button class="button-layout bg-green col-7 align-items-center">
+          <i class="bi bi-bag-fill mx-1"></i> {{ favoriteProduct.price }}$
         </button>
       </div>
     </div>
