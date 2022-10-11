@@ -3,7 +3,7 @@ import { User } from 'src/app/models/user';
 import { ToastService } from 'angular-toastify';
 import { Regexp } from "../../models/regex";
 import { AuthService } from "../../services/auth.service";
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, ValidationErrors, Validator, Validators} from "@angular/forms";
 import { Router } from "@angular/router";
 
 @Component({
@@ -19,6 +19,7 @@ export class SignUpComponent implements OnInit {
 
   user = new User();
   token = null;
+  askIfForgot = false;
 
   constructor(
     private router: Router,
@@ -52,10 +53,12 @@ export class SignUpComponent implements OnInit {
       sessionStorage.setItem('name', this.signUpForm.get('name').value);
       sessionStorage.setItem('email', this.signUpForm.get('email').value);
       this.authService.getTokenType(res.token)
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']).then()
       return res;
     } catch (err) {
-      this.toast.error(err);
+      this.toast.error(err.error.message);
+      this.signUpForm.get('email').setErrors([err])
+      this.askIfForgot = true;
       return err;
     }
   }

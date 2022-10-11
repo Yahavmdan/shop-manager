@@ -42,9 +42,9 @@ export class AddProductComponent implements OnInit {
       .createData(this.addProductForm.getRawValue())
       .toPromise()
       .then(() => this.router.navigate(['/products']))
-      .catch(() => {
+      .catch((err) => {
         this.isDisabled = false;
-        this.toast.error('Please make sure that you filled everything correctly')
+        this.toast.error(err.error.message)
       });
   }
 

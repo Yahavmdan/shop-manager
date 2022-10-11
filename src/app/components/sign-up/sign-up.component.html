@@ -1,7 +1,6 @@
 <div class="d-flex flex-column align-items-center">
 <h3 class="mb-2">Sign up</h3>
-<form style="background-color: #fafffe; padding: 20px; border-radius: 20px; box-shadow: 0px 15px 29px 0px #DBDBDB;"
-      class="d-flex flex-column col-lg-7 col-12" (ngSubmit)="createUser()" [formGroup]="signUpForm">
+<form class="d-flex flex-column col-lg-7 col-12 form-container" (ngSubmit)="createUser()" [formGroup]="signUpForm">
   <div class="form-group">
     <input
       placeholder="Name *"
@@ -79,6 +78,9 @@
       at least 1 uppercase letter, lowercase letter, a number and a spacial sign.
     </small>
   </div>
+
+  <small *ngIf="askIfForgot" class="link-primary mt-1 pointer" routerLink="/reset-password">Forgot Password?</small>
+
   <div class="form-group my-3">
     <input
       type="checkbox"
@@ -87,7 +89,7 @@
     />
     <label class="mx-2 f-14">Check to register as an Admin</label>
     <br>
-    <small class="link-primary" style="cursor: pointer;" routerLink="/login">Already have an account?</small>
+    <small class="link-primary pointer" routerLink="/login">Already have an account?</small>
   </div>
   <div class="d-flex justify-content-evenly">
     <button class="bg-green col-3 button-layout text-nowrap" type="submit">Sign up</button>
