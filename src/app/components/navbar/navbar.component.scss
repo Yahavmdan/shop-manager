@@ -1,0 +1,75 @@
+@import "src/styles.scss";
+
+.nav-bar-links {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 5;
+  padding: 0 0 0 1.5rem;
+  background-color: #6ecca1;
+}
+
+.nav-bar-user {
+  position: absolute;
+  right: 0;
+  display: flex;
+  padding: 0 1.5rem 0 0;
+  color: $white;
+  flex-direction: row;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: row;
+  color: $white;
+}
+
+@media (max-width: 768px) {
+  .nav-bar-links {
+    flex-direction: column;
+    width: 50px;
+    height: 50px;
+    padding: 1.5rem 0 0 0;
+    transition: 0.3s ease;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .nav-bar-links-active {
+    align-items: center;
+    height: 100vh;
+    width: 150px !important;
+    background-color: #6ecca1;
+  }
+
+  .nav-bar-user {
+    bottom: 50px;
+    padding: 0 0 1.5rem 0;
+  }
+
+  .links-container {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    row-gap: 0.5rem;
+  }
+
+  .navToggle {
+    color: $white;
+    position: absolute;
+    left: 17px;
+    width: 25px;
+    height: 25px;
+    background-color: rgba(106, 147, 86, 0.51);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+  }
+
+}

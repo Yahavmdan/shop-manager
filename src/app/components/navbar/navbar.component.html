@@ -1,69 +1,52 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink=""
-    >Shop
-      <i class="bi bi-shop"></i>
-      Manager</a
-    >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarCollapse"
-      aria-controls="navbarCollapse"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/task"
-          >The Task</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/products">Products</a>
-        </li>
-        <li *ngIf="userType === 1" class="nav-item">
-          <a class="nav-link" routerLink="/add-product">Add a Product</a>
-        </li>
-        <li *ngIf="userType === 1 || userType === 2" class="nav-item">
-          <a class="nav-link" routerLink="/favorites">Favorites</a>
-        </li>
-        <li *ngIf="userType === 1" class="nav-item">
-          <a class="nav-link" routerLink="/users">Manage Users</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <a
-          *ngIf="!userType"
-          class="btn btn-outline-success m-1"
-          routerLink="/login"
-          type="submit"
-        >Log-in</a>
-        <a
-          *ngIf="!userType"
-          class="btn btn-outline-success m-1"
-          routerLink="/sign-up"
-          type="submit"
-        >Sign-up</a>
-        <a
-          *ngIf="userType === 1 || userType === 2"
-          class="nav-link btn btn-outline-primary m-1"
-          routerLink="/user-details"
-        >User details</a>
-        <a
-          *ngIf="userType === 1 || userType === 2"
-          (click)="logout()"
-          class="btn btn-outline-danger m-1"
-          type="submit"
-        >Log-out</a>
-      </form>
+<nav #navbar class="bg-light-grey nav-bar-links">
+  <div #navToggle (click)="activeNav(navbar, navToggle)" class="navToggle">
+    <i class="d-md-none d-flex bi bi-box-arrow-down-right"></i>
+  </div>
+
+  <div (click)="navigate(navbar, navToggle, ['/home'])" class="f-22 tex text-white pointer d-md-block d-none">Shop<i
+    class="bi bi-shop mx-1"></i>Manager
+  </div>
+
+  <div class="links-container">
+    <div (click)="navigate(navbar, navToggle, ['/home'])" class="pointer me-3 ms-md-3 d-flex">
+      <div *ngIf="navBarActive">Home</div>
+    </div>
+    <div (click)="navigate(navbar, navToggle, ['/task'])" class="pointer me-3">
+      <div *ngIf="navBarActive">Task</div>
+    </div>
+    <div (click)="navigate(navbar, navToggle, ['/products'])" class="pointer me-3">
+      <div *ngIf="navBarActive">Products</div>
+    </div>
+    <div *ngIf="userType === 1" (click)="navigate(navbar, navToggle, ['/add-product'])" class="pointer me-3">
+      <div *ngIf="navBarActive">Add-Products</div>
+    </div>
+    <div *ngIf="userType === 1 || userType === 2" (click)="navigate(navbar, navToggle, ['/favorites'])"
+         class="pointer me-3">
+      <div *ngIf="navBarActive">Favorites</div>
+    </div>
+    <div *ngIf="userType === 1" (click)="navigate(navbar, navToggle, ['/users'])" class="pointer me-3">
+      <div *ngIf="navBarActive">Users</div>
+    </div>
+  </div>
+
+  <div class="nav-bar-user">
+    <div *ngIf="!userType" (click)="navigate(navbar, navToggle, ['/login'])" class="pointer me-3">
+      <div *ngIf="navBarActive">Sign-in</div>
+    </div>
+    <div *ngIf="userType === 1 || userType === 2" (click)="logout(navbar)" class="pointer me-3">
+      <div *ngIf="navBarActive"><i class="bi bi-box-arrow-left"></i></div>
+    </div>
+    <div *ngIf="!userType" (click)="navigate(navbar, navToggle, ['/sign-up'])" class="pointer me-3">
+      <div *ngIf="navBarActive">Sign-up</div>
+    </div>
+    <div *ngIf="userType === 1 || userType === 2" (click)="navigate(navbar, navToggle, ['/user-details'])"
+         class="pointer me-3">
+      <div *ngIf="navBarActive"><i class="bi bi-gear"></i></div>
     </div>
   </div>
 </nav>
+
+
+<div (click)="navigate(navbar, navToggle)" *ngIf="navBarActive && blurOverlay" class="blur-overlay"></div>
+
+

@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { Navbar2Component } from './components/navbar2/navbar2.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +30,6 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     AppComponent,
     ProductsComponent,
     NavbarComponent,
-    Navbar2Component,
     AddProductComponent,
     EditProductComponent,
     HomeComponent,
