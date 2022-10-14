@@ -25,8 +25,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   navigate(navbar, ham?, url?): void {
-    if (navbar?.classList.contains('nav-bar-links-active')) {
-      navbar.classList.remove('nav-bar-links-active');
+    if (navbar?.classList.contains('nav-bar-active')) {
+      navbar.classList.remove('nav-bar-active');
       this.navBarActive = !this.navBarActive;
       this.blurOverlay = !this.blurOverlay;
     }
@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   activeNav(nav, ham): void {
-    nav.classList.toggle('nav-bar-links-active');
+    nav.classList.toggle('nav-bar-active');
     this.blurOverlay = !this.blurOverlay;
     this.navBarActive = !this.navBarActive;
     this.navBarActive ? ham.style.transform = 'rotate(180deg)' : ham.style.transform = 'rotate(0deg)';
@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout(navbar) {
     let answer = confirm('Are you sure you want to log-out?');
     if (answer) {
-      navbar.classList.toggle('nav-bar-links-active');
+      navbar.classList.toggle('nav-bar-active');
       sessionStorage.clear();
       location.href = '/home'
     }

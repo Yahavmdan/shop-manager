@@ -1,49 +1,53 @@
-<nav #navbar class="bg-light-grey nav-bar-links">
+<nav #navbar class="nav-bar">
   <div #navToggle (click)="activeNav(navbar, navToggle)" class="navToggle">
     <i class="d-md-none d-flex bi bi-box-arrow-down-right"></i>
   </div>
 
-  <div (click)="navigate(navbar, navToggle, ['/home'])" class="f-22 tex text-white pointer d-md-block d-none">Shop<i
+  <div (click)="navigate(navbar, navToggle, ['/home'])" class="nav-logo">Shop<i
     class="bi bi-shop mx-1"></i>Manager
   </div>
 
   <div class="links-container">
-    <div (click)="navigate(navbar, navToggle, ['/home'])" class="pointer me-3 ms-md-3 d-flex">
-      <div *ngIf="navBarActive">Home</div>
+    <div class="navigation-links">
+      <div (click)="navigate(navbar, navToggle, ['/home'])" class="pointer me-3 ms-md-3 d-flex">
+        <div *ngIf="navBarActive">Home</div>
+      </div>
+      <div (click)="navigate(navbar, navToggle, ['/task'])" class="pointer me-3">
+        <div *ngIf="navBarActive">Task</div>
+      </div>
+      <div (click)="navigate(navbar, navToggle, ['/products'])" class="pointer me-3">
+        <div *ngIf="navBarActive">Products</div>
+      </div>
+      <div *ngIf="userType === 1" (click)="navigate(navbar, navToggle, ['/add-product'])" class="pointer me-3">
+        <div *ngIf="navBarActive">Add-Products</div>
+      </div>
+      <div *ngIf="userType === 1 || userType === 2" (click)="navigate(navbar, navToggle, ['/favorites'])"
+           class="pointer me-3">
+        <div *ngIf="navBarActive">Favorites</div>
+      </div>
+      <div *ngIf="userType === 1" (click)="navigate(navbar, navToggle, ['/users'])" class="pointer me-3">
+        <div *ngIf="navBarActive">Users</div>
+      </div>
     </div>
-    <div (click)="navigate(navbar, navToggle, ['/task'])" class="pointer me-3">
-      <div *ngIf="navBarActive">Task</div>
+
+    <div  class="account-links">
+      <div *ngIf="!userType" (click)="navigate(navbar, navToggle, ['/login'])" class="pointer me-3 f-md-12">
+        <div *ngIf="navBarActive">Sign-in</div>
+      </div>
+      <div *ngIf="userType === 1 || userType === 2" (click)="logout(navbar)" class="pointer me-0 me-md-3">
+        <div *ngIf="navBarActive"><i class="bi bi-box-arrow-left"></i></div>
+      </div>
+      <div *ngIf="!userType" (click)="navigate(navbar, navToggle, ['/sign-up'])" class="pointer me-0 me-md-3 f-md-12">
+        <div *ngIf="navBarActive">Sign-up</div>
+      </div>
+      <div *ngIf="userType === 1 || userType === 2" (click)="navigate(navbar, navToggle, ['/user-details'])"
+           class="pointer">
+        <div *ngIf="navBarActive"><i class="bi bi-gear"></i></div>
+      </div>
     </div>
-    <div (click)="navigate(navbar, navToggle, ['/products'])" class="pointer me-3">
-      <div *ngIf="navBarActive">Products</div>
-    </div>
-    <div *ngIf="userType === 1" (click)="navigate(navbar, navToggle, ['/add-product'])" class="pointer me-3">
-      <div *ngIf="navBarActive">Add-Products</div>
-    </div>
-    <div *ngIf="userType === 1 || userType === 2" (click)="navigate(navbar, navToggle, ['/favorites'])"
-         class="pointer me-3">
-      <div *ngIf="navBarActive">Favorites</div>
-    </div>
-    <div *ngIf="userType === 1" (click)="navigate(navbar, navToggle, ['/users'])" class="pointer me-3">
-      <div *ngIf="navBarActive">Users</div>
-    </div>
+
   </div>
 
-  <div class="nav-bar-user">
-    <div *ngIf="!userType" (click)="navigate(navbar, navToggle, ['/login'])" class="pointer me-3">
-      <div *ngIf="navBarActive">Sign-in</div>
-    </div>
-    <div *ngIf="userType === 1 || userType === 2" (click)="logout(navbar)" class="pointer me-3">
-      <div *ngIf="navBarActive"><i class="bi bi-box-arrow-left"></i></div>
-    </div>
-    <div *ngIf="!userType" (click)="navigate(navbar, navToggle, ['/sign-up'])" class="pointer me-3">
-      <div *ngIf="navBarActive">Sign-up</div>
-    </div>
-    <div *ngIf="userType === 1 || userType === 2" (click)="navigate(navbar, navToggle, ['/user-details'])"
-         class="pointer me-3">
-      <div *ngIf="navBarActive"><i class="bi bi-gear"></i></div>
-    </div>
-  </div>
 </nav>
 
 

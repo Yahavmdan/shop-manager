@@ -1,67 +1,95 @@
 @import "src/styles.scss";
 
-.nav-bar-links {
-  display: flex;
-  align-items: center;
+.nav-bar {
+  height: 60px;
   position: fixed;
+  background-color: $green;
+  display: flex;
   top: 0;
   width: 100%;
-  height: 60px;
   z-index: 5;
-  padding: 0 0 0 1.5rem;
-  background-color: #6ecca1;
+  align-items: center;
+  padding: 0 1.5rem 0 1.5rem;
 }
 
-.nav-bar-user {
-  position: absolute;
-  right: 0;
-  display: flex;
-  padding: 0 1.5rem 0 0;
+.nav-logo {
+  font-size: 22px;
   color: $white;
-  flex-direction: row;
+  cursor: pointer;
+  width: 200px;
+  white-space: nowrap;
 }
 
 .links-container {
   display: flex;
   flex-direction: row;
   color: $white;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navigation-links {
+  display: flex;
+}
+
+.account-links {
+  display: flex;
 }
 
 @media (max-width: 768px) {
-  .nav-bar-links {
+
+  .nav-bar {
+    height:0;
+    width: 0;
+    left: 0;
     flex-direction: column;
-    width: 50px;
-    height: 50px;
-    padding: 1.5rem 0 0 0;
-    transition: 0.3s ease;
-    align-items: center;
-    background-color: transparent;
+    padding:  1.5rem 0 1.5rem 0;
+    transition: all .2s ease;
   }
 
-  .nav-bar-links-active {
+  .nav-logo {
+    display: none;
+  }
+
+  .navigation-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-bar-active {
     align-items: center;
     height: 100vh;
     width: 150px !important;
-    background-color: #6ecca1;
   }
 
   .nav-bar-user {
-    top: 85vh;
+    top: 50px;
     padding: 0 0 1.5rem 0;
   }
 
   .links-container {
+    width: 100%;
+    padding: 0 1.1rem 0 1.1rem;
     flex-direction: column;
     position: absolute;
     top: 60px;
-    left: 20px;
-    row-gap: 0.5rem;
+  }
+
+  .navigation-links {
+    row-gap: 1rem;
+  }
+
+  .account-links {
+    margin-top: 50px;
+    width: 100%;
+    justify-content: space-evenly;
   }
 
   .navToggle {
     color: $white;
     position: absolute;
-    left: 17px;
+    top: 10px;
+    left: 10px;
     width: 25px;
     height: 25px;
     background-color: rgba(106, 147, 86, 0.51);
