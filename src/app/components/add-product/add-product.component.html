@@ -19,16 +19,11 @@
     </small>
   </div>
   <div class="form-group">
-    <input
-      formControlName="description"
-      placeholder="Description *"
-      type="text"
-      name="description"
-      class="form-control mt-2"
+    <textarea formControlName="description" placeholder="Description *" type="text" name="description" class="form-control mt-2"
       [ngClass]="
       !addProductForm.get('description').valid && addProductForm.get('description').touched ?
        'bg-danger border-danger bg-opacity-25' : ''"
-    />
+    ></textarea>
     <small class="text-danger input-error" *ngIf="!addProductForm.get('description').valid
     && addProductForm.get('description').touched">
       Description is required

@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+  <div *ngIf="!data?.length" class="alert alert-danger d-flex w-75" role="alert">
+    There are no products, click to add one...
+  </div>
+</div>
+
+<div class="d-flex flex-row flex-wrap justify-content-center gap-5">
+  <div *ngFor="let product of data">
+    <div class="card-container">
+      <div class="d-flex gap-1 position-absolute m-1 crud-button-container">
+        <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-pencil button-layout bg-blue text-white col-4 justify-content-center align-items-center" (click)="goToEdit(product.id)"></button>
+        <button *ngIf="userType === '1' || userType === '2'" style="z-index: 2;" class="bi bi-star button-layout bg-yellow text-white justify-content-center align-items-center" [ngClass]="userType === '1' ? 'col-4' : 'col-12'" (click)="setFavorite(product)"></button>
+        <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-trash3 button-layout bg-red text-white col-4 justify-content-center align-items-center" (click)="deleteData(product.id)"></button>
+      </div>
+      <div *ngIf="!product.img" class="no-img-card"></div>
+      <div *ngIf="product.img" class="img-card" [ngStyle]="{'background-image': 'url(' + product.img + ')'}"></div>
+      <div [ngClass]="{'mt-0' : !userType}" class="product-title truncate">{{ product.name }}</div>
+      <div class="product-body">
+        <div [ngClass]="{'mb-4' : !userType}" *ngIf="product.description" class="product-description">{{ product.description }}</div>
+      </div>
+      <div class="button-container">
+        <button class="button-layout bg-green col-7" (click)="goToEdit(product.id)">
+          <i class="bi bi-bag-fill mx-1"></i> {{ product.price }}$
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

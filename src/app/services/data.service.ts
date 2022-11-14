@@ -30,25 +30,28 @@ export class DataService {
     });
   }
 
-  editData(id: any, data: any) {
+  editData(id: number, data: any) {
     return this.httpClient.put(`${this.apiURL}/products/${id}`, data, {
       headers: this.header,
     });
   }
 
-  getById(id: any) {
+  getById(id: number) {
     return this.httpClient.get(`${this.apiURL}/products/${id}`, {
       headers: this.header,
     });
   }
 
-  deleteData(id: any) {
+  deleteData(id: number) {
     return this.httpClient.delete(`${this.apiURL}/products/${id}`, {
       headers: this.header,
     });
   }
 
-  searchData(searchValue: string | number) {
+  searchData(searchValue: string | number ) {
+    if (searchValue === '') {
+      searchValue = 0;
+    }
     return this.httpClient.get(`${this.apiURL}/products/search/${searchValue}`);
   }
 

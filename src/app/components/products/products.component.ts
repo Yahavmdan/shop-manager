@@ -11,7 +11,6 @@ import { AuthService } from "../../services/auth.service";
 })
 export class ProductsComponent implements OnInit {
 
-  allProducts = []
   products = []
   userType = sessionStorage.getItem('userType');
   token = sessionStorage.getItem('token');
@@ -26,44 +25,15 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProductsData();
     if (this.token) {
       this.authService.getTokenType(this.token)
     }
   }
 
-  getProductsData() {
-    this.dataService.getData().subscribe((res: any) => {
-      this.products = res;
-      this.allProducts = res;
-    });
-  }
-
-  deleteData(id: any) {
-    let answer = confirm('Are you sure you want to delete?');
-    if (answer) {
-      this.dataService.deleteData(id).subscribe(() => {
-        this.getProductsData();
-      });
-      this.toast.success('Product was deleted');
-    }
-  }
-
-  goToEdit(id: any) {
-    this.router.navigate([`/edit/${id}`]).then();
-  }
-
   search(searchValue: string | number) {
     this.dataService.searchData(searchValue).subscribe((res: any) => {
       this.products = res;
-      if (!searchValue) {
-        this.products = this.allProducts;
-      }
     });
-  }
-
-  setFavorite(product) {
-    localStorage.setItem(product.id, JSON.stringify(product))
   }
 
 }

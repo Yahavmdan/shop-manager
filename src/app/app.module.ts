@@ -23,6 +23,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { UsersComponent } from './components/users/users.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { DataCardComponent } from "./components/shared/product-card/data-card.component";
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     FavoritesComponent,
     UsersComponent,
     EditUserComponent,
+    DataCardComponent
   ],
   imports: [
     HttpClientModule,

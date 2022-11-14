@@ -1,0 +1,88 @@
+@import "src/styles.scss";
+
+.card-container {
+  height: 350px;
+  width: 250px;
+  border: solid 1px $lighter-grey;
+  border-radius: 10px;
+  background-color: $very-lighter-grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.no-img-card {
+  height: 150px;
+  width: 248px;
+  background-image: url("https://www.nicepng.com/png/detail/304-3048415_business-advice-product-icon-png.png");
+  background-repeat: no-repeat;
+  background-position: top ,center;
+  background-size: 250px;
+  border-radius: 10px 10px 0 0;
+  filter: grayscale(75%);
+}
+
+.img-card {
+  height: 150px;
+  width: 248px;
+  background-repeat: no-repeat;
+  background-position: top ,center;
+  background-size: 250px;
+  border-radius: 10px 10px 0 0;
+}
+
+.crud-button-container {
+  width: 75px;
+  height: 20px;
+  transition: ease all .5s;
+}
+
+.product-title {
+  width: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 .5em 0 .5em;
+  transition: ease all 0.3s;
+}
+
+.product-body {
+  padding: .5em;
+}
+
+.product-description {
+  overflow-wrap: break-word;
+  height: 100px;
+  overflow: auto;
+  transition: ease all .5s;
+}
+
+.card-container:hover {
+  .img-card, .no-img-card {
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  }
+  .product-title {
+    margin-top: 32px;
+    padding: 0 .2em 0 .2em;
+    height: 60px;
+    color: $black;
+    font-size: 26px;
+    font-weight: 700;
+    position: absolute;
+    z-index: 2;
+    transition: ease all 0.3s;
+    text-shadow: 0 0 7px $white;
+  }
+  .product-description {
+    height: 215px;
+  }
+  .crud-button-container {
+    width: 150px;
+    height: 25px;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: .7em;
+}

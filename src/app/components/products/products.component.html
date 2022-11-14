@@ -1,57 +1,14 @@
-<div class="container">
+<div class="container mb-3">
   <div class="row">
     <div>
-      <input
-        #searchInput
-        type="text"
-        (input)="search(searchInput.value)"
-        placeholder="Search product..."
-        class="w-100 form-control form-control-lg mt-4 mb-2"
-      />
+      <input #searchInput type="text" (input)="search(searchInput.value)" placeholder="Search product..."
+             class="w-100 form-control form-control-lg mt-4 mb-2"/>
     </div>
   </div>
-  <lib-toastify-toast-container></lib-toastify-toast-container>
-  <div *ngIf="!products?.length" class="alert alert-danger" role="alert">
-    There are no products, click to add one...
-  </div>
-  <button *ngIf="userType === '1'" class="bi bi-plus-circle-fill btn btn-primary w-100" routerLink="/add-product">
-    Add a product
+  <button *ngIf="userType === '1'" class="bi bi-plus-circle-fill btn btn-primary w-100" routerLink="/add-product">Add a
+    product
   </button>
 </div>
-<br/>
-<div class="d-flex flex-row flex-wrap justify-content-evenly gap-2">
-  <div *ngFor="let product of products">
-    <div class="card bg-light my-2 overflow-hidden" style="width: 15rem; height: 25rem;">
-      <div class="d-flex gap-1 position-absolute m-1">
-        <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-trash3 button-layout bg-red text-white col-4 btn-sm"
-                (click)="deleteData(product.id)"></button>
-        <button style="z-index: 2;" *ngIf="userType === '1'" class="bi bi-pencil button-layout bg-blue text-white col-4 btn-sm"
-                (click)="goToEdit(product.id)"></button>
-        <button *ngIf="userType === '1' || userType === '2'" style="z-index: 2;" class="bi bi-star button-layout bg-yellow text-white btn-sm"
-                [ngClass]="userType === '1' ? 'col-4' : 'col-12'"
-                (click)="setFavorite(product)"></button>
-      </div>
-      <img class="card-img-top"
-           style=" filter: grayscale(75%); z-index: 1;"
-           *ngIf="!product.img"
-           src="https://www.nicepng.com/png/detail/304-3048415_business-advice-product-icon-png.png"/>
-      <img
-        *ngIf="product.img"
-        src="{{ product.img }}"
-        style="width: 250px; height: 160px;"
-        class="card-img-top"
-        alt="{{ product.name }}"
-      />
-      <div class="card-body">
-        <h5 class="card-title truncate">{{ product.name }}</h5>
-        <div *ngIf="product.description" class="card-text description-box overflow-auto">{{ product.description }}</div>
-        <li *ngIf="userType === '1'" class="card-text">Product number {{ product.id }}</li>
-      </div>
-      <div class="d-flex justify-content-center mb-3">
-        <button class="button-layout bg-green col-7" (click)="goToEdit(product.id)">
-          <i class="bi bi-bag-fill mx-1"></i> {{ product.price }}$
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+
+<app-data-card [data]="products"></app-data-card>
+<lib-toastify-toast-container></lib-toastify-toast-container>
